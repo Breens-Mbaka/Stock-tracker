@@ -28,6 +28,3 @@ $ Run emulator to use Stock Tracker
 
 ## Status
 Project is: _in progress_
-=======
-
->>>>>>> origin/master
