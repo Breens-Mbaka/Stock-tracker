@@ -1,6 +1,5 @@
 # Project Name
 > Stock Tracker
-
 ## Table of contents
 * [Project description](#project-description)
 * [Technologies](#technologies)
