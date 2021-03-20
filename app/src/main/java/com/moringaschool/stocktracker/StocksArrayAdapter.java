@@ -13,15 +13,15 @@ import butterknife.ButterKnife;
 public class StocksArrayAdapter extends BaseAdapter {
 
     private Context mContext;
-    private String[] mNames;
     private String[] mSymbol;
+    private String[] mNames;
     private String[] mPrice;
     private String[] mTrend;
 
-    public StocksArrayAdapter(Context context, String[] names, String[] symbol, String[] price, String[] trend) {
+    public StocksArrayAdapter(Context context, String[] symbol,String[] names, String[] price, String[] trend) {
         this.mContext = context;
-        this.mNames = names;
         this.mSymbol = symbol;
+        this.mNames = names;;
         this.mPrice = price;
         this.mTrend = trend;
     }
@@ -49,13 +49,13 @@ public class StocksArrayAdapter extends BaseAdapter {
         if (convertView == null) {
             listView = inflater.inflate(R.layout.stock_item, null);
 
-            TextView textName = listView.findViewById(R.id.textView3);
             TextView textSymbol = listView.findViewById(R.id.textView4);
+            TextView textName = listView.findViewById(R.id.textView3);
             TextView textPrice = listView.findViewById(R.id.textView5);
             TextView textTrend = listView.findViewById(R.id.textView6);
 
-            textName.setText(mNames[position]);
             textSymbol.setText(mSymbol[position]);
+            textName.setText(mNames[position]);
             textPrice.setText(mPrice[position]);
             textTrend.setText(mTrend[position]);
         } else {
