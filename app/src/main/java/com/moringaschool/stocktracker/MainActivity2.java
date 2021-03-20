@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,6 +15,7 @@ import butterknife.ButterKnife;
 public class MainActivity2 extends AppCompatActivity {
     @BindView(R.id.textView8) TextView mTextNames;
     @BindView(R.id.textView9) TextView mTextPrice;
+    @BindView(R.id.button) Button mButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,5 +28,12 @@ public class MainActivity2 extends AppCompatActivity {
 
        mTextNames.setText(companyName);
        mTextPrice.setText(stockPrice);
+
+       mButton.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Toast.makeText(MainActivity2.this,"Added to portfolio!",Toast.LENGTH_LONG).show();
+           }
+       });
     }
 }

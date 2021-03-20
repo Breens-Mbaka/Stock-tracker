@@ -188,6 +188,6 @@
         android:layout_marginLeft="33.5dp"
         android:layout_below="@+id/cardView"
         android:layout_centerHorizontal="true"
-        android:background="@color/light_blue"/>
+        android:backgroundTint="@color/light_blue"/>
 
 </RelativeLayout>
