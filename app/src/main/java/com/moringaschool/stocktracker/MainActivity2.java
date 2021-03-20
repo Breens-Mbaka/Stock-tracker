@@ -22,7 +22,14 @@ public class MainActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
         ButterKnife.bind(this);
 
-       String text = getIntent().getStringExtra("symbol");
-       mTextSymbol.setText(text);
+       String symbolName = getIntent().getStringExtra("symbol");
+       String companyName = getIntent().getStringExtra("name");
+       String stockPrice = getIntent().getStringExtra("stock");
+       String trend = getIntent().getStringExtra("trend");
+
+       mTextSymbol.setText(symbolName);
+       mTextNames.setText(companyName);
+       mTextPrice.setText(stockPrice);
+       mTextTrend.setText(trend);
     }
 }
