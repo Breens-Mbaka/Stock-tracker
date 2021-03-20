@@ -16,6 +16,7 @@ public class MainActivity2 extends AppCompatActivity {
     @BindView(R.id.textView8) TextView mTextNames;
     @BindView(R.id.textView9) TextView mTextPrice;
     @BindView(R.id.button) Button mButton;
+    @BindView(R.id.button2) Button mButton2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,13 @@ public class MainActivity2 extends AppCompatActivity {
            @Override
            public void onClick(View v) {
                Toast.makeText(MainActivity2.this,"Added to portfolio!",Toast.LENGTH_LONG).show();
+           }
+       });
+       mButton2.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent = new Intent(MainActivity2.this,MainActivity3.class);
+               startActivity(intent);
            }
        });
     }
