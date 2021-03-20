@@ -10,7 +10,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class StocksArrayAdapter extends BaseAdapter {
+public class StocksAdapter extends BaseAdapter {
 
     private Context mContext;
     private String[] mSymbol;
@@ -18,7 +18,7 @@ public class StocksArrayAdapter extends BaseAdapter {
     private String[] mPrice;
     private String[] mTrend;
 
-    public StocksArrayAdapter(Context context, String[] symbol,String[] names, String[] price, String[] trend) {
+    public StocksAdapter(Context context, String[] symbol, String[] names, String[] price, String[] trend) {
         this.mContext = context;
         this.mSymbol = symbol;
         this.mNames = names;;
