@@ -43,25 +43,18 @@ public class StocksArrayAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View listView;
+        convertView = LayoutInflater.from(mContext).inflate(R.layout.stock_item, parent,false);
 
-        if (convertView == null) {
-            listView = inflater.inflate(R.layout.stock_item, null);
+        TextView textSymbol = convertView.findViewById(R.id.textView4);
+        TextView textName = convertView.findViewById(R.id.textView3);
+        TextView textPrice = convertView.findViewById(R.id.textView5);
+        TextView textTrend = convertView.findViewById(R.id.textView6);
 
-            TextView textSymbol = listView.findViewById(R.id.textView4);
-            TextView textName = listView.findViewById(R.id.textView3);
-            TextView textPrice = listView.findViewById(R.id.textView5);
-            TextView textTrend = listView.findViewById(R.id.textView6);
-
-            textSymbol.setText(mSymbol[position]);
-            textName.setText(mNames[position]);
-            textPrice.setText(mPrice[position]);
-            textTrend.setText(mTrend[position]);
-        } else {
-            listView = convertView;
-        }
-        return listView;
+        textSymbol.setText(mSymbol[position]);
+        textName.setText(mNames[position]);
+        textPrice.setText(mPrice[position]);
+        textTrend.setText(mTrend[position]);
+        return convertView;
     }
 }
 
