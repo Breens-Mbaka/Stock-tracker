@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,5 +32,13 @@ public class MainActivity extends AppCompatActivity {
         String[] trend = {"-2.38", "-13.07", "-19.62", "-4.22", "-15.37", "-7.16", "-16.27", "-11.57", "-16.60", "-0.89", "-4.08", "-3.96", "-10.79", "-6.34", "-10.44", "-15.66", "-18.67", "-8.07", "-1.88", "-1.85", "-15.80"};
 
         mListView.setAdapter( new StocksArrayAdapter(this, symbols,names,stockPrice,trend));
+
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this, "yes" + position, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
