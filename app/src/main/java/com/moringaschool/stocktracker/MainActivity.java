@@ -37,8 +37,15 @@ public class MainActivity extends AppCompatActivity {
                  @Override
                  public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                      String symbolClickedValue = symbols[position];
+                     String nameClickedValue = names[position];
+                     String stockPriceClickedValue = stockPrice[position];
+                     String trendClickedValue = trend[position];
+
                      Intent intent = new Intent(MainActivity.this,MainActivity2.class);
                      intent.putExtra("symbol",symbolClickedValue);
+                     intent.putExtra("name",nameClickedValue);
+                     intent.putExtra("stock",stockPriceClickedValue);
+                     intent.putExtra("trend",trendClickedValue);
                      startActivity(intent);
                  }
              });
