@@ -59,7 +59,7 @@ public class StocksArrayAdapter extends BaseAdapter {
             textPrice.setText(mPrice[position]);
             textTrend.setText(mTrend[position]);
         } else {
-            listView = (View) convertView;
+            listView = convertView;
         }
         return listView;
     }

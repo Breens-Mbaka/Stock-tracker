@@ -2,11 +2,13 @@ package com.moringaschool.stocktracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import butterknife.BindView;
@@ -33,11 +35,12 @@ public class MainActivity extends AppCompatActivity {
 
         mListView.setAdapter( new StocksArrayAdapter(this, symbols,names,stockPrice,trend));
 
-
+        //Attached a click listener to here for clicks of individual views that are clicked
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this, "yes" + position, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this,MainActivity2.class);
+                startActivity(intent);
             }
         });
     }
