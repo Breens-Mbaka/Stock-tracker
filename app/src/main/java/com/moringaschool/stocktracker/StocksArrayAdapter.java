@@ -7,7 +7,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class StocksArrayAdapter extends BaseAdapter {
+
     private Context mContext;
     private String[] mNames;
     private String[] mSymbol;
