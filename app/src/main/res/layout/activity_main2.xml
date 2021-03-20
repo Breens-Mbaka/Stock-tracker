@@ -30,7 +30,8 @@
         card_view:cardElevation="8dp"
         android:layout_below="@id/textView9"
         android:backgroundTint="@color/white"
-        android:layout_margin="20dp">
+        android:layout_margin="20dp"
+        android:id="@+id/cardView">
 
         <!-- Main Content View -->
 
@@ -178,4 +179,15 @@
             </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ADD TO PORTFOLIO"
+        android:layout_marginLeft="33.5dp"
+        android:layout_below="@+id/cardView"
+        android:layout_centerHorizontal="true"
+        android:background="@color/light_blue"/>
+
 </RelativeLayout>
