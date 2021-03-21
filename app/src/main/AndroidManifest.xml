@@ -9,7 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StockTracker">
-        <activity android:name=".MainActivity3"></activity>
+        <activity
+            android:name=".MainActivity3"
+            android:parentActivityName=".MainActivity2">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity3"/>
+        </activity>
         <activity
             android:name=".MainActivity2"
             android:parentActivityName=".MainActivity">
