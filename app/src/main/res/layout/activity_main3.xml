@@ -26,8 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/textView10"
-        android:layout_marginTop="30dp"
-        android:id="@+id/listView2"
-        android:padding="10dp"/>
+        android:layout_marginTop="20dp"
+        android:id="@+id/listView2"/>
 
 </RelativeLayout>
