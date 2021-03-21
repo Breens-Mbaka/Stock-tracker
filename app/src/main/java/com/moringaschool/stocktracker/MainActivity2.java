@@ -1,5 +1,6 @@
 package com.moringaschool.stocktracker;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -29,6 +30,7 @@ public class MainActivity2 extends AppCompatActivity {
 
        mTextNames.setText(companyName);
        mTextPrice.setText(stockPrice);
+       getSupportActionBar().setTitle(companyName);
 
        mButton.setOnClickListener(new View.OnClickListener() {
            @Override
