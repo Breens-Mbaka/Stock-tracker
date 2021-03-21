@@ -19,7 +19,7 @@
         android:text="Name"
         android:layout_below="@+id/textView31"
         android:fontFamily="monospace"
-        android:textSize="15sp"/>
+        android:textSize="16sp"/>
 
     <TextView
         android:id="@+id/textView33"
@@ -38,5 +38,6 @@
         android:layout_alignParentEnd="true"
         android:layout_below="@id/textView33"
         android:fontFamily="monospace"
-        android:textSize="15sp"/>
+        android:textSize="16sp"
+        android:textColor="@color/green_900"/>
 </RelativeLayout>

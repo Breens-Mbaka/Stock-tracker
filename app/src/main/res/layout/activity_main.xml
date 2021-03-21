@@ -7,7 +7,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Stock Tracker"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:textSize="30sp"
         android:textStyle="bold"/>
@@ -16,7 +16,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Available stocks"
+        android:text="Click on a stock to add it to your portfolio"
         android:layout_below="@id/textView"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="8dp"
