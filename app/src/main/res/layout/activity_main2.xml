@@ -186,7 +186,8 @@
         android:layout_height="wrap_content"
         android:ems="18"
         android:inputType="textPersonName"
-        android:text="Portfolio Name"
+        android:text=""
+        hint
         android:layout_below="@id/cardView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"/>

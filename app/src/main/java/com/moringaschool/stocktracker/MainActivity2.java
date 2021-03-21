@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -19,6 +20,7 @@ public class MainActivity2 extends AppCompatActivity {
     @BindView(R.id.textView9) TextView mTextPrice;
     @BindView(R.id.button) Button mButton;
     @BindView(R.id.button2) Button mButton2;
+    @BindView(R.id.editTextTextPersonName) EditText mEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +44,9 @@ public class MainActivity2 extends AppCompatActivity {
        mButton2.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
+               String portfolioName = mEditText.getEditableText().toString();
                Intent intent = new Intent(MainActivity2.this,MainActivity3.class);
+               intent.putExtra("portfolioName",portfolioName);
                startActivity(intent);
            }
        });

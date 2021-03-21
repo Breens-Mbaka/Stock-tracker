@@ -16,12 +16,16 @@ import butterknife.ButterKnife;
 
 public class MainActivity3 extends AppCompatActivity {
     @BindView(R.id.listView2) ListView mListView2;
+    @BindView(R.id.textView35) TextView mPortfolio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
         ButterKnife.bind(this);
+
+        String portfolioName = getIntent().getStringExtra("portfolioName");
+        mPortfolio.setText(portfolioName);
 
         String[] symbols = {"BTC", "Ethereum", "Binance Coin", "Cardano", "Tether", "Polkadot", "XRP", "Uniswap", "Litecoin", "Chainlink", "Bitcoin Cash", "USD Coin", "Stellar", "THETA", "Dogecoin", "VeChain", "Crypto.org Coin", "Filecoin", "Aave", "Cosmos", "Avalanche"};
         String[] names = {"Bitcoin", "ETH", "BNB", "ADA", "USDT", "DOT", "XRP", "UNI", "LTC", "LINK", "BCH", "USDC", "XLM", "THETA", "DOGE", "VET", "CRO", "FIL", "AAVE", "ATOM", "AVAX"};
