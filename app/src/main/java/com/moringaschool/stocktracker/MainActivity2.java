@@ -47,6 +47,7 @@ public class MainActivity2 extends AppCompatActivity {
                String portfolioName = mEditText.getEditableText().toString();
                Intent intent = new Intent(MainActivity2.this,MainActivity3.class);
                intent.putExtra("portfolioName",portfolioName);
+               mEditText.setText(null);
                startActivity(intent);
            }
        });

@@ -184,10 +184,10 @@
         android:id="@+id/editTextTextPersonName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="18"
+        android:ems="19"
         android:inputType="textPersonName"
         android:text=""
-        hint
+        android:hint="Add portfolio name"
         android:layout_below="@id/cardView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"/>
