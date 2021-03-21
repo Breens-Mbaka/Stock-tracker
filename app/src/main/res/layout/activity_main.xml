@@ -16,11 +16,11 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Click on a stock to add it to your portfolio"
+        android:text="Click the stock to add it to your portfolio!"
         android:layout_below="@id/textView"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="8dp"
-        android:textSize="20sp"/>
+        android:textSize="22sp"/>
 
     <ListView
         android:layout_width="match_parent"
