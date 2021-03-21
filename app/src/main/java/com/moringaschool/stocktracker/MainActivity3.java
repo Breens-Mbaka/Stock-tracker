@@ -1,15 +1,22 @@
 package com.moringaschool.stocktracker;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity3 extends AppCompatActivity {
     @BindView(R.id.listView2) ListView mListView2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

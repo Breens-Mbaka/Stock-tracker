@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
                      String stockPriceClickedValue = stockPrice[position];
 
                      Intent intent = new Intent(MainActivity.this,MainActivity2.class);
+
                      intent.putExtra("name",nameClickedValue);
                      intent.putExtra("stock",stockPriceClickedValue);
                      startActivity(intent);
