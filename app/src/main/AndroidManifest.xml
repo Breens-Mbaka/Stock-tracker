@@ -11,11 +11,7 @@
         android:theme="@style/Theme.StockTracker">
         <activity
             android:name=".MainActivity3"
-            android:parentActivityName=".MainActivity2"
             android:label="CryptoCurrency Prices">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity3"/>
         </activity>
         <activity
             android:name=".MainActivity2"
