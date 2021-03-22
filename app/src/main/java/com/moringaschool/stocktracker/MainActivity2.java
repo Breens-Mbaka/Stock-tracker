@@ -46,6 +46,7 @@ public class MainActivity2 extends AppCompatActivity {
            public void onClick(View v) {
                String portfolioName = mEditText.getEditableText().toString();
                if (portfolioName.equals("")) {
+                   Toast.makeText(MainActivity2.this,"Please add portfolio name",Toast.LENGTH_LONG).show();
                    return;
                }
                else {
