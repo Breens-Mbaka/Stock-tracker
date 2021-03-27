@@ -1,4 +1,4 @@
-package com.moringaschool.stocktracker;
+package com.moringaschool.stocktracker.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+
+import com.moringaschool.stocktracker.R;
+import com.moringaschool.stocktracker.adapters.StocksAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                      String nameClickedValue = names[position];
                      String stockPriceClickedValue = stockPrice[position];
 
-                     Intent intent = new Intent(MainActivity.this,MainActivity2.class);
+                     Intent intent = new Intent(MainActivity.this, MainActivity2.class);
 
                      intent.putExtra("name",nameClickedValue);
                      intent.putExtra("stock",stockPriceClickedValue);

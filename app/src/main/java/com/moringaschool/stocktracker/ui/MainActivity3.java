@@ -1,15 +1,13 @@
-package com.moringaschool.stocktracker;
+package com.moringaschool.stocktracker.ui;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ActionBar;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.moringaschool.stocktracker.R;
+import com.moringaschool.stocktracker.adapters.CryptoAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

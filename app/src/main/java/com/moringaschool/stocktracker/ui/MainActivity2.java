@@ -1,6 +1,5 @@
-package com.moringaschool.stocktracker;
+package com.moringaschool.stocktracker.ui;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,7 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
+
+import com.moringaschool.stocktracker.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -50,7 +50,7 @@ public class MainActivity2 extends AppCompatActivity {
                    return;
                }
                else {
-                   Intent intent = new Intent(MainActivity2.this,MainActivity3.class);
+                   Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
                    intent.putExtra("portfolioName",portfolioName);
                    mEditText.setText(null);
                    startActivity(intent);

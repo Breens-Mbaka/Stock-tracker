@@ -1,4 +1,4 @@
-package com.moringaschool.stocktracker;
+package com.moringaschool.stocktracker.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.moringaschool.stocktracker.R;
 
 public class CryptoAdapter extends BaseAdapter {
     private Context mContext;
