@@ -1,17 +1,15 @@
 package com.moringaschool.stocktracker.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 
 import com.moringaschool.stocktracker.R;
 import com.moringaschool.stocktracker.adapters.StocksAdapter;
-import com.moringaschool.stocktracker.models.Stocks;
+import com.moringaschool.stocktracker.models.MyCrypto;
 import com.moringaschool.stocktracker.networking.TwelveDataApi;
 import com.moringaschool.stocktracker.networking.TwelveDataClient;
 
@@ -22,7 +20,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-    @BindView(R.id.listView) ListView mListView;
+    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
+    private StocksAdapter stocksAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,18 +32,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getStocksData() {
-        TwelveDataApi twelveDataApi = TwelveDataClient.getClient().create(TwelveDataApi.class);
-        Call<Stocks> call = twelveDataApi.getStocks();
+        TwelveDataApi twelveDataApi = TwelveDataClient.getClient();
+        Call<MyCrypto> call = twelveDataApi.getStocks();
 
-        call.enqueue(new Callback<Stocks>() {
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(layoutManager);
+
+        call.enqueue(new Callback<MyCrypto>() {
             @Override
-            public void onResponse(Call<Stocks> call, Response<Stocks> response) {
-                Log.d("DEBUG","STOCK DATA: " + response.body());
+            public void onResponse(Call<MyCrypto> call, Response<MyCrypto> response) {
+                Log.d("DEBUG","RESPONSE: " + response.body().getData().getCoins());
+                stocksAdapter = new StocksAdapter(response.body().getData().getCoins());
+                mRecyclerView.setAdapter(stocksAdapter);
             }
 
             @Override
-            public void onFailure(Call<Stocks> call, Throwable t) {
-                Log.e("ERROR","-> " + t);
+            public void onFailure(Call<MyCrypto> call, Throwable t) {
+                Log.e("ERROR", "ERROR: " + t);
             }
         });
     }

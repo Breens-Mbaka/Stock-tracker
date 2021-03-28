@@ -1,62 +1,57 @@
 package com.moringaschool.stocktracker.adapters;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.moringaschool.stocktracker.R;
+import com.moringaschool.stocktracker.models.Coin;
+import com.moringaschool.stocktracker.models.Data;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class StocksAdapter extends BaseAdapter {
+public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHolder> {
+    private List<Coin> cryptoList;
+    public StocksAdapter(List<Coin> cryptoList) {
+        this.cryptoList = cryptoList;
+    }
 
-    private Context mContext;
-    private String[] mSymbol;
-    private String[] mNames;
-    private String[] mPrice;
-    private String[] mTrend;
-
-    public StocksAdapter(Context context, String[] symbol, String[] names, String[] price, String[] trend) {
-        this.mContext = context;
-        this.mSymbol = symbol;
-        this.mNames = names;;
-        this.mPrice = price;
-        this.mTrend = trend;
+    @NonNull
+    @Override
+    public StocksAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.stock_item,parent,false);
+        return new MyViewHolder(view);
     }
 
     @Override
-    public int getCount() {
-        return mNames.length;
+    public void onBindViewHolder(@NonNull StocksAdapter.MyViewHolder holder, int position) {
+        holder.mSymbol.setText(cryptoList.get(position).getSymbol());
+        holder.mName.setText(cryptoList.get(position).getName());
+        holder.mCurrency.setText(cryptoList.get(position).getPrice());
+        holder.mCountry.setText(cryptoList.get(position).getChange());
     }
 
     @Override
-    public Object getItem(int position) {
-        return null;
+    public int getItemCount() {
+        return cryptoList.size();
     }
 
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.textView3) TextView mSymbol;
+        @BindView(R.id.textView4) TextView mName;
+        @BindView(R.id.textView5) TextView mCurrency;
+        @BindView(R.id.textView6) TextView mCountry;
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        convertView = LayoutInflater.from(mContext).inflate(R.layout.stock_item, parent,false);
-
-        TextView textSymbol = convertView.findViewById(R.id.textView4);
-        TextView textName = convertView.findViewById(R.id.textView3);
-        TextView textPrice = convertView.findViewById(R.id.textView5);
-        TextView textTrend = convertView.findViewById(R.id.textView6);
-
-        textSymbol.setText(mSymbol[position]);
-        textName.setText(mNames[position]);
-        textPrice.setText(mPrice[position]);
-        textTrend.setText(mTrend[position]);
-        return convertView;
+        public MyViewHolder(@NonNull View itemView) {
+            super(itemView);
+            ButterKnife.bind(this,itemView);
+        }
     }
 }
-
