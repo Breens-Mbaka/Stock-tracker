@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -22,6 +23,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     private StocksAdapter stocksAdapter;
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<MyCrypto> call, Response<MyCrypto> response) {
                 Log.d("DEBUG","RESPONSE: " + response.body().getData().getCoins());
-                stocksAdapter = new StocksAdapter(response.body().getData().getCoins());
+                stocksAdapter = new StocksAdapter(MainActivity.this,response.body().getData().getCoins());
                 mRecyclerView.setAdapter(stocksAdapter);
             }
 
