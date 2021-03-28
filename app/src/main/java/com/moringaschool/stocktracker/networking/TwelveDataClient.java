@@ -40,7 +40,6 @@ public class TwelveDataClient {
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
-
         return retrofit.create(TwelveDataApi.class);
     }
 }

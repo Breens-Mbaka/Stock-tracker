@@ -36,95 +36,25 @@
         android:layout_margin="20dp"
         android:backgroundTint="@color/white">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
+        <RelativeLayout android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+            <TextView android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:layout_height="200dp"
-                android:orientation="vertical"
-                android:padding="20dp">
+                android:text="More details"
+                android:layout_marginLeft="130dp"
+                android:id="@+id/heading"/>
 
-                <TextView
-                    android:id="@+id/textView11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Market Cap"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
-
-
-                <TextView
-                    android:id="@+id/textView12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:text="TextView" />
-
-                <TextView
-                    android:id="@+id/textView13"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:text="Tier"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/textView14"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:text="TextView" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
+            <TextView android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:layout_height="200dp"
-                android:layout_marginLeft="100dp"
-                android:orientation="vertical"
-                android:padding="20dp">
+                android:id="@+id/description"
+                android:layout_margin="20dp"
+                android:text="More details"
+                android:layout_below="@id/heading"
+                android:layout_marginTop="20dp"
+                android:lineSpacingExtra="10dp"
+                android:lineHeight="10dp"/>
 
-                <TextView
-                    android:id="@+id/textView15"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Rank"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
-
-
-                <TextView
-                    android:id="@+id/textView16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:text="TextView" />
-
-                <TextView
-                    android:id="@+id/textView17"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:text="Volume"
-                    android:textSize="17sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/textView18"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:text="TextView" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
     <EditText
