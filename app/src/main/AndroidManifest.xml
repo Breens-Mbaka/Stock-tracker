@@ -15,12 +15,12 @@
             android:label="CryptoCurrency Prices">
         </activity>
         <activity
-            android:name=".ui.MainActivity2"
+            android:name=".ui.CryptoStats"
             android:parentActivityName=".ui.MainActivity"
             android:label="">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.MainActivity2"/>
+                android:value=".ui.CryptoStats"/>
         </activity>
         <activity android:name=".ui.MainActivity">
             <intent-filter>

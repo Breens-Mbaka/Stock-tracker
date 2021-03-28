@@ -15,7 +15,7 @@ import com.moringaschool.stocktracker.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity2 extends AppCompatActivity {
+public class CryptoStats extends AppCompatActivity {
     @BindView(R.id.textView8) TextView mTextNames;
     @BindView(R.id.textView9) TextView mTextPrice;
     @BindView(R.id.button) Button mButton;
@@ -25,7 +25,7 @@ public class MainActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.crypto_stats);
         ButterKnife.bind(this);
 
        String companyName = getIntent().getStringExtra("name");
@@ -38,7 +38,7 @@ public class MainActivity2 extends AppCompatActivity {
        mButton.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Toast.makeText(MainActivity2.this,"Added to portfolio!",Toast.LENGTH_LONG).show();
+               Toast.makeText(CryptoStats.this,"Added to portfolio!",Toast.LENGTH_LONG).show();
            }
        });
        mButton2.setOnClickListener(new View.OnClickListener() {
@@ -46,11 +46,11 @@ public class MainActivity2 extends AppCompatActivity {
            public void onClick(View v) {
                String portfolioName = mEditText.getEditableText().toString();
                if (portfolioName.equals("")) {
-                   Toast.makeText(MainActivity2.this,"Please add portfolio name",Toast.LENGTH_LONG).show();
+                   Toast.makeText(CryptoStats.this,"Please add portfolio name",Toast.LENGTH_LONG).show();
                    return;
                }
                else {
-                   Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+                   Intent intent = new Intent(CryptoStats.this, MainActivity3.class);
                    intent.putExtra("portfolioName",portfolioName);
                    mEditText.setText(null);
                    startActivity(intent);

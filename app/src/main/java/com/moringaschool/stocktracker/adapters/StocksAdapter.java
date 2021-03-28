@@ -11,7 +11,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.moringaschool.stocktracker.R;
 import com.moringaschool.stocktracker.models.Coin;
 
@@ -30,7 +29,7 @@ public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHold
     @NonNull
     @Override
     public StocksAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.stock_item,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.crypto_item,parent,false);
         return new MyViewHolder(view);
     }
 

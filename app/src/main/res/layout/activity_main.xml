@@ -9,7 +9,7 @@
         android:text="Crypto Tracker"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
-        android:textSize="30sp"
+        android:textSize="27sp"
         android:textStyle="bold"/>
 
     <TextView
@@ -20,12 +20,15 @@
         android:layout_below="@id/textView"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="8dp"
-        android:textSize="22sp"/>
+        android:textSize="22sp"
+        android:layout_marginBottom="10dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/textView2"
-        android:id="@+id/recyclerView"/>
+        android:id="@+id/recyclerView">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 </RelativeLayout>
