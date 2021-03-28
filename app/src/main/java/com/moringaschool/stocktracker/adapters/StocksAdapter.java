@@ -34,8 +34,14 @@ public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHold
     public void onBindViewHolder(@NonNull StocksAdapter.MyViewHolder holder, int position) {
         holder.mSymbol.setText(cryptoList.get(position).getSymbol());
         holder.mName.setText(cryptoList.get(position).getName());
-        holder.mCurrency.setText(cryptoList.get(position).getPrice());
-        holder.mCountry.setText(cryptoList.get(position).getChange());
+
+        Double price = Double.parseDouble(cryptoList.get(position).getPrice());
+        Double number = Math.round(price * 100.0) /100.0;
+        holder.mCurrency.setText(number.toString());
+
+        Double change = Double.parseDouble(cryptoList.get(position).getChange());
+        Double priceChange = Math.round(change * 100.0) /100.0;
+        holder.mCountry.setText(priceChange.toString());
     }
 
     @Override
