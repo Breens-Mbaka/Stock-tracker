@@ -1,16 +1,19 @@
 package com.moringaschool.stocktracker.adapters;
 
+import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.moringaschool.stocktracker.R;
 import com.moringaschool.stocktracker.models.Coin;
-import com.moringaschool.stocktracker.models.Data;
 
 import java.util.List;
 
@@ -18,6 +21,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHolder> {
+    Context context;
     private List<Coin> cryptoList;
     public StocksAdapter(List<Coin> cryptoList) {
         this.cryptoList = cryptoList;
@@ -37,11 +41,18 @@ public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHold
 
         Double price = Double.parseDouble(cryptoList.get(position).getPrice());
         Double number = Math.round(price * 100.0) /100.0;
-        holder.mCurrency.setText(number.toString());
+        holder.mCurrency.setText("$" + number.toString());
+
 
         Double change = Double.parseDouble(cryptoList.get(position).getChange());
         Double priceChange = Math.round(change * 100.0) /100.0;
-        holder.mCountry.setText(priceChange.toString());
+        if(priceChange < 0) {
+            holder.mCountry.setTextColor(Color.parseColor("#FF0000"));
+        }
+        else{
+            holder.mCountry.setTextColor(Color.parseColor("#1B5E20"));
+        }
+        holder.mCountry.setText("$" + priceChange.toString());
     }
 
     @Override
@@ -50,6 +61,7 @@ public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHold
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.coinImage) ImageView mImage;
         @BindView(R.id.textView3) TextView mSymbol;
         @BindView(R.id.textView4) TextView mName;
         @BindView(R.id.textView5) TextView mCurrency;

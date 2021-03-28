@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/listContent" android:padding="20dp">
 
     <TextView
@@ -36,4 +38,11 @@
         android:layout_below="@+id/textView5"
         android:textSize="16sp"
         android:textStyle="bold"/>
+
+    <ImageView
+        android:id="@+id/coinImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:srcCompat="@tools:sample/avatars"
+        android:layout_marginLeft="100dp"/>
 </RelativeLayout>
