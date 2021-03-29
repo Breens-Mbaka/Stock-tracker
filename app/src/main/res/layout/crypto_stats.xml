@@ -152,5 +152,5 @@
         android:layout_below="@+id/cardView"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/teal_200"
-        android:text="SEE CRYPTO-CURRENCY" />
+        android:text="MONITOR LIVE PRICE" />
 </RelativeLayout>

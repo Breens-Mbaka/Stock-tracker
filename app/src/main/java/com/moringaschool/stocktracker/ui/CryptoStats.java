@@ -3,6 +3,7 @@ package com.moringaschool.stocktracker.ui;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -94,6 +95,14 @@ public class CryptoStats extends AppCompatActivity {
                 DecimalFormat circulationDf = new DecimalFormat("###,###.##");
                 String stringCirculation = circulationDf.format(circulation);
                 mCirculation.setText("$" + stringCirculation);
+
+                mButton2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(response.body().getData().getCoin().getCoinrankingUrl()));
+                        startActivity(intent);
+                    }
+                });
             }
 
             @Override
