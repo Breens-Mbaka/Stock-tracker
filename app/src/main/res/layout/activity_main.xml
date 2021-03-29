@@ -16,11 +16,11 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Click on crypto to view stats"
+        android:text="Click on crypto-currency to view stats"
         android:layout_below="@id/textView"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="8dp"
-        android:textSize="22sp"
+        android:textSize="17sp"
         android:layout_marginBottom="10dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
