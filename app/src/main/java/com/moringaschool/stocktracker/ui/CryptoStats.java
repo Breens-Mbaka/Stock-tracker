@@ -39,6 +39,7 @@ public class CryptoStats extends AppCompatActivity {
     @BindView(R.id.textView21) TextView mVolumeTraded;
     @BindView(R.id.textView23) TextView mCirculation;
     @BindView(R.id.button2) Button mButton2;
+    @BindView(R.id.button3) Button mButton3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +60,9 @@ public class CryptoStats extends AppCompatActivity {
             public void onResponse(Call<CryptoData> call, Response<CryptoData> response) {
                 mTextNames.setText(response.body().getData().getCoin().getName());
 
-                //converting string to double then rounding off the price
+                /**
+                 * converting string to double then rounding off the price.Then formatting them to be separated by commas
+                 */
                 double price = Double.parseDouble(response.body().getData().getCoin().getPrice());
                 double number = Math.round(price * 100.0) /100.0;
                 mTextPrice.setText("$" + Double.toString(number));
@@ -102,6 +105,14 @@ public class CryptoStats extends AppCompatActivity {
                     public void onClick(View v) {
                         Toast.makeText(CryptoStats.this, "Redirecting...Please wait", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(response.body().getData().getCoin().getCoinrankingUrl()));
+                        startActivity(intent);
+                    }
+                });
+
+                mButton3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(CryptoStats.this, SearchCrypto.class);
                         startActivity(intent);
                     }
                 });

@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StockTracker">
         <activity
-            android:name=".ui.MainActivity3"
+            android:name=".ui.SearchCrypto"
             android:label="CryptoCurrency Prices">
         </activity>
         <activity
