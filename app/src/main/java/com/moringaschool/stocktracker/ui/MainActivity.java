@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.moringaschool.stocktracker.R;
 import com.moringaschool.stocktracker.adapters.StocksAdapter;
@@ -21,7 +24,15 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
+    @BindView(R.id.recyclerView)
+    RecyclerView mRecyclerView;
+    @BindView(R.id.progressBar)
+    ProgressBar mProgress;
+    @BindView(R.id.textView)
+    TextView mHeading1;
+    @BindView(R.id.textView2)
+    TextView mHeading2;
+
     private StocksAdapter stocksAdapter;
     private Context mContext;
 
@@ -43,8 +54,13 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<MyCrypto>() {
             @Override
             public void onResponse(Call<MyCrypto> call, Response<MyCrypto> response) {
-                Log.d("DEBUG","RESPONSE: " + response.body().getData().getCoins());
-                stocksAdapter = new StocksAdapter(MainActivity.this,response.body().getData().getCoins());
+                //displaying content after response is gotten
+                mProgress.setVisibility(View.GONE);
+                mHeading1.setVisibility(View.VISIBLE);
+                mHeading2.setVisibility(View.VISIBLE);
+                mRecyclerView.setVisibility(View.VISIBLE);
+
+                stocksAdapter = new StocksAdapter(MainActivity.this, response.body().getData().getCoins());
                 mRecyclerView.setAdapter(stocksAdapter);
             }
 

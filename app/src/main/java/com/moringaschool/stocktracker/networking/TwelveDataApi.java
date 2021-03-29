@@ -8,7 +8,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 public interface TwelveDataApi {
-    @GET("coins?limit=15")
+    @GET("coins?limit=30")
     Call<MyCrypto> getStocks();
 
     @GET("coin/{coinId}")
