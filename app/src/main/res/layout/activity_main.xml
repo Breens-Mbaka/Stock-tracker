@@ -10,7 +10,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:textSize="27sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/textView2"
@@ -20,14 +21,27 @@
         android:layout_below="@id/textView"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="8dp"
+        android:fontFamily="monospace"
         android:textSize="17sp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp"
+        android:visibility="gone"/>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:id="@+id/progressBar"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="800dp"
+        android:layout_marginLeft="500dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/textView2"
-        android:id="@+id/recyclerView">
+        android:visibility="gone">
 
     </androidx.recyclerview.widget.RecyclerView>
 

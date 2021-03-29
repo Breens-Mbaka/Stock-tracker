@@ -8,6 +8,14 @@
     android:padding="10dp"
     android:layout_marginTop="30dp">
 
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:id="@+id/progressBar2"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="100dp"/>
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
@@ -16,7 +24,8 @@
         android:layout_marginTop="10dp"
         android:text="TextView"
         android:textSize="25sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/textView9"
@@ -25,7 +34,8 @@
         android:layout_below="@+id/textView8"
         android:layout_centerHorizontal="true"
         android:text="TextView"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:visibility="gone"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -36,7 +46,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/textView9"
         android:layout_margin="20dp"
-        android:backgroundTint="@color/white">
+        android:backgroundTint="@color/white"
+        android:visibility="gone">
 
         <RelativeLayout android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -162,19 +173,9 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="35dp"
+        android:visibility="gone"
         android:layout_below="@+id/cardView"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/teal_200"
         android:text="MONITOR LIVE PRICE" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="35dp"
-        android:layout_below="@+id/button2"
-        android:layout_marginTop="30dp"
-        android:backgroundTint="@color/teal_200"
-        android:text="SEARCH CRYPTO-CURRENCY" />
 </RelativeLayout>

@@ -1,6 +1,7 @@
 package com.moringaschool.stocktracker.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,8 +40,9 @@ public class CryptoStats extends AppCompatActivity {
     @BindView(R.id.textView19) TextView mTier;
     @BindView(R.id.textView21) TextView mVolumeTraded;
     @BindView(R.id.textView23) TextView mCirculation;
+    @BindView(R.id.progressBar2) ProgressBar mProgress2;
+    @BindView(R.id.cardView) CardView mCardView;
     @BindView(R.id.button2) Button mButton2;
-    @BindView(R.id.button3) Button mButton3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +61,12 @@ public class CryptoStats extends AppCompatActivity {
         call.enqueue(new Callback<CryptoData>() {
             @Override
             public void onResponse(Call<CryptoData> call, Response<CryptoData> response) {
+                mProgress2.setVisibility(View.GONE);
+                mTextNames.setVisibility(View.VISIBLE);
+                mTextPrice.setVisibility(View.VISIBLE);
+                mCardView.setVisibility(View.VISIBLE);
+                mButton2.setVisibility(View.VISIBLE);
+
                 mTextNames.setText(response.body().getData().getCoin().getName());
 
                 /**
@@ -105,14 +114,6 @@ public class CryptoStats extends AppCompatActivity {
                     public void onClick(View v) {
                         Toast.makeText(CryptoStats.this, "Redirecting...Please wait", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(response.body().getData().getCoin().getCoinrankingUrl()));
-                        startActivity(intent);
-                    }
-                });
-
-                mButton3.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(CryptoStats.this, SearchCrypto.class);
                         startActivity(intent);
                     }
                 });
