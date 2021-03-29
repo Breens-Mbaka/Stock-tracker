@@ -32,17 +32,28 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CryptoStats extends AppCompatActivity {
-    @BindView(R.id.textView8) TextView mTextNames;
-    @BindView(R.id.textView9) TextView mTextPrice;
-    @BindView(R.id.textView13) TextView mHighestPrice;
-    @BindView(R.id.textView15) TextView mMarketValue;
-    @BindView(R.id.textView17) TextView mRanks;
-    @BindView(R.id.textView19) TextView mTier;
-    @BindView(R.id.textView21) TextView mVolumeTraded;
-    @BindView(R.id.textView23) TextView mCirculation;
-    @BindView(R.id.progressBar2) ProgressBar mProgress2;
-    @BindView(R.id.cardView) CardView mCardView;
-    @BindView(R.id.button2) Button mButton2;
+    @BindView(R.id.textView8)
+    TextView mTextNames;
+    @BindView(R.id.textView9)
+    TextView mTextPrice;
+    @BindView(R.id.textView13)
+    TextView mHighestPrice;
+    @BindView(R.id.textView15)
+    TextView mMarketValue;
+    @BindView(R.id.textView17)
+    TextView mRanks;
+    @BindView(R.id.textView19)
+    TextView mTier;
+    @BindView(R.id.textView21)
+    TextView mVolumeTraded;
+    @BindView(R.id.textView23)
+    TextView mCirculation;
+    @BindView(R.id.progressBar2)
+    ProgressBar mProgress2;
+    @BindView(R.id.cardView)
+    CardView mCardView;
+    @BindView(R.id.button2)
+    Button mButton2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,22 +84,21 @@ public class CryptoStats extends AppCompatActivity {
                  * converting string to double then rounding off the price.Then formatting them to be separated by commas
                  */
                 double price = Double.parseDouble(response.body().getData().getCoin().getPrice());
-                double number = Math.round(price * 100.0) /100.0;
+                double number = Math.round(price * 100.0) / 100.0;
                 mTextPrice.setText("$" + Double.toString(number));
 
                 double doubleHighestPrice = Double.parseDouble(response.body().getData().getCoin().getAllTimeHigh().getPrice());
-                double highestPrice = Math.round(doubleHighestPrice * 100.0) /100.0;
+                double highestPrice = Math.round(doubleHighestPrice * 100.0) / 100.0;
                 DecimalFormat priceDf = new DecimalFormat("###,###.##");
                 String stringPrice = priceDf.format(highestPrice);
                 mHighestPrice.setText("$" + stringPrice);
 
                 Double doubleMarketCap = Double.parseDouble(response.body().getData().getCoin().getMarketCap());
-                if(doubleMarketCap > 999999999999.0){
+                if (doubleMarketCap > 999999999999.0) {
                     DecimalFormat df = new DecimalFormat("##.##");
-                    String roundedMarketCap = df.format(doubleMarketCap/1000000000000.0);
+                    String roundedMarketCap = df.format(doubleMarketCap / 1000000000000.0);
                     mMarketValue.setText("$" + roundedMarketCap + "T");
-                }
-                else {
+                } else {
                     DecimalFormat df = new DecimalFormat("###,###");
                     String roundedMarketCap = df.format(doubleMarketCap);
                     mMarketValue.setText("$" + roundedMarketCap);
@@ -121,7 +131,7 @@ public class CryptoStats extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<CryptoData> call, Throwable t) {
-                Log.e("ERROR","Message: " + t);
+                Log.e("ERROR", "Message: " + t);
             }
         });
     }

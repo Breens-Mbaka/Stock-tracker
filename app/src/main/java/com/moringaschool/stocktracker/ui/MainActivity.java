@@ -24,10 +24,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
-    @BindView(R.id.progressBar) ProgressBar mProgress;
-    @BindView(R.id.textView) TextView mHeading1;
-    @BindView(R.id.textView2) TextView mHeading2;
+    @BindView(R.id.recyclerView)
+    RecyclerView mRecyclerView;
+    @BindView(R.id.progressBar)
+    ProgressBar mProgress;
+    @BindView(R.id.textView)
+    TextView mHeading1;
+    @BindView(R.id.textView2)
+    TextView mHeading2;
 
     private StocksAdapter stocksAdapter;
     private Context mContext;
@@ -56,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 mHeading2.setVisibility(View.VISIBLE);
                 mRecyclerView.setVisibility(View.VISIBLE);
 
-                stocksAdapter = new StocksAdapter(MainActivity.this,response.body().getData().getCoins());
+                stocksAdapter = new StocksAdapter(MainActivity.this, response.body().getData().getCoins());
                 mRecyclerView.setAdapter(stocksAdapter);
             }
 
