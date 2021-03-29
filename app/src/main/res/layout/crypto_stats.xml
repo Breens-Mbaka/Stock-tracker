@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.CryptoStats"
-    android:padding="10dp">
+    android:padding="10dp"
+    android:layout_marginTop="30dp">
 
     <TextView
         android:id="@+id/textView8"
@@ -46,7 +47,8 @@
                 android:id="@+id/textView12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Highest price" />
+                android:text="Highest price"
+                android:textSize="18sp"/>
 
             <TextView
                 android:id="@+id/textView13"
@@ -54,7 +56,8 @@
                 android:layout_height="wrap_content"
                 android:text="Price"
                 android:layout_below="@id/textView12"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/anton"/>
 
             <TextView
                 android:id="@+id/textView14"
@@ -62,7 +65,8 @@
                 android:layout_height="wrap_content"
                 android:text="Market Value"
                 android:layout_below="@id/textView13"
-                android:layout_marginTop="18dp"/>
+                android:layout_marginTop="18dp"
+                android:textSize="18sp"/>
 
             <TextView
                 android:id="@+id/textView15"
@@ -70,7 +74,8 @@
                 android:layout_height="wrap_content"
                 android:text="Value"
                 android:layout_below="@id/textView14"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/anton"/>
 
             <TextView
                 android:id="@+id/textView16"
@@ -78,7 +83,8 @@
                 android:layout_height="wrap_content"
                 android:text="Rank"
                 android:layout_below="@id/textView15"
-                android:layout_marginTop="18dp"/>
+                android:layout_marginTop="18dp"
+                android:textSize="18sp"/>
 
             <TextView
                 android:id="@+id/textView17"
@@ -86,7 +92,8 @@
                 android:layout_height="wrap_content"
                 android:text="1"
                 android:layout_below="@id/textView16"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/anton"/>
 
             <TextView
                 android:id="@+id/textView18"
@@ -94,7 +101,8 @@
                 android:layout_height="wrap_content"
                 android:text="Tier"
                 android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"/>
+                android:layout_alignParentRight="true"
+                android:textSize="18sp"/>
 
             <TextView
                 android:id="@+id/textView19"
@@ -103,16 +111,18 @@
                 android:text="1"
                 android:layout_below="@id/textView18"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/anton"/>
 
             <TextView
                 android:id="@+id/textView20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Volume traded"
+                android:text="Volume"
                 android:layout_below="@id/textView19"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="18dp"/>
+                android:layout_marginTop="18dp"
+                android:textSize="18sp"/>
 
             <TextView
                 android:id="@+id/textView21"
@@ -121,16 +131,18 @@
                 android:text="1"
                 android:layout_below="@id/textView20"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/anton"/>
 
             <TextView
                 android:id="@+id/textView22"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Current circulation"
+                android:text="Circulation"
                 android:layout_below="@id/textView21"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="18dp"/>
+                android:layout_marginTop="18dp"
+                android:textSize="18sp"/>
 
             <TextView
                 android:id="@+id/textView23"
@@ -139,7 +151,8 @@
                 android:text="1"
                 android:layout_below="@id/textView22"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/anton"/>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
