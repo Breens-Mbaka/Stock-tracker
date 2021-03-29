@@ -67,6 +67,10 @@ public class Coin {
     @SerializedName("coinrankingUrl")
     @Expose
     private String coinrankingUrl;
+    @SerializedName("tier")
+    @Expose
+    private String tier;
+
 
     /**
      * No args constructor for use in serialization
@@ -98,7 +102,7 @@ public class Coin {
      * @param links
      * @param iconUrl
      */
-    public Coin(String uuid, String symbol, String name, String description, String color, String iconUrl, String websiteUrl, List<Link> links, Supply supply, String _24hVolume, String marketCap, String price, String btcPrice, String change, Integer rank, Integer numberOfMarkets, Integer numberOfExchanges, List<String> sparkline, AllTimeHigh allTimeHigh, String coinrankingUrl) {
+    public Coin(String uuid, String symbol, String name, String description, String color, String iconUrl, String websiteUrl, List<Link> links, Supply supply, String _24hVolume, String marketCap, String price, String btcPrice, String change, Integer rank, Integer numberOfMarkets, Integer numberOfExchanges, List<String> sparkline, AllTimeHigh allTimeHigh, String coinrankingUrl,String tier) {
         super();
         this.uuid = uuid;
         this.symbol = symbol;
@@ -120,6 +124,7 @@ public class Coin {
         this.sparkline = sparkline;
         this.allTimeHigh = allTimeHigh;
         this.coinrankingUrl = coinrankingUrl;
+        this.tier = tier;
     }
 
     public String getUuid() {
@@ -280,6 +285,14 @@ public class Coin {
 
     public void setCoinrankingUrl(String coinrankingUrl) {
         this.coinrankingUrl = coinrankingUrl;
+    }
+
+    public String getTier() {
+        return tier;
+    }
+
+    public void setTier(String tier) {
+        this.tier = tier;
     }
 
 }

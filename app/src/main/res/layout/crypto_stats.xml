@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.CryptoStats">
+    tools:context=".ui.CryptoStats"
+    android:padding="10dp">
 
     <TextView
         android:id="@+id/textView8"
@@ -37,56 +38,118 @@
         android:backgroundTint="@color/white">
 
         <RelativeLayout android:layout_height="wrap_content"
-            android:layout_width="match_parent">
-            <TextView android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="More details"
-                android:layout_marginLeft="130dp"
-                android:id="@+id/heading"/>
+            android:layout_width="match_parent"
+            android:padding="25dp">
 
-            <TextView android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:id="@+id/description"
-                android:layout_margin="20dp"
-                android:text="More details"
-                android:layout_below="@id/heading"
-                android:layout_marginTop="20dp"
-                android:lineSpacingExtra="10dp"
-                android:lineHeight="10dp"/>
 
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Highest price" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price"
+                android:layout_below="@id/textView12"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Market Value"
+                android:layout_below="@id/textView13"
+                android:layout_marginTop="18dp"/>
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Value"
+                android:layout_below="@id/textView14"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rank"
+                android:layout_below="@id/textView15"
+                android:layout_marginTop="18dp"/>
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:layout_below="@id/textView16"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tier"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"/>
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:layout_below="@id/textView18"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Volume traded/24hr"
+                android:layout_below="@id/textView19"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="18dp"/>
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:layout_below="@id/textView20"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Current circulation"
+                android:layout_below="@id/textView21"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="18dp"/>
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:layout_below="@id/textView22"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"/>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
-
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/cardView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:ems="15"
-        android:hint="Add portfolio name"
-        android:inputType="textPersonName"
-        android:text="" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextTextPersonName"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="5dp"
-        android:backgroundTint="@color/light_blue"
-        android:text="ADD TO PORTFOLIO" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="35dp"
+        android:layout_below="@+id/cardView"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/teal_200"
         android:text="SEE CRYPTO-CURRENCY" />
