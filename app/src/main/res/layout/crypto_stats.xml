@@ -109,7 +109,7 @@
                 android:id="@+id/textView20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Volume traded/24hr"
+                android:text="Volume traded"
                 android:layout_below="@id/textView19"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="18dp"/>

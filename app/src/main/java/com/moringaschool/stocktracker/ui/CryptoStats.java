@@ -2,6 +2,7 @@ package com.moringaschool.stocktracker.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.nfc.Tag;
@@ -99,6 +100,7 @@ public class CryptoStats extends AppCompatActivity {
                 mButton2.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Toast.makeText(CryptoStats.this, "Redirecting...Please wait", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(response.body().getData().getCoin().getCoinrankingUrl()));
                         startActivity(intent);
                     }
