@@ -50,6 +50,7 @@ public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHold
         holder.mSymbol.setText(mCryptoList.get(position).getSymbol());
         holder.mName.setText(mCryptoList.get(position).getName());
 
+        //loading svg icon images using Glide
         GlideToVectorYou
                 .init()
                 .with(mContext)
