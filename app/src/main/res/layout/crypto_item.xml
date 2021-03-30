@@ -8,11 +8,20 @@
     android:layout_height="wrap_content"
     android:padding="20dp">
 
+    <ImageView
+        android:id="@+id/coinImage"
+        android:layout_width="20dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="15dp"
+        tools:srcCompat="@tools:sample/avatars"
+        android:src="@drawable/default_icon"/>
+
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
+        android:layout_marginLeft="50dp"
         android:text="Symbol"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -24,6 +33,7 @@
         android:layout_below="@+id/textView3"
         android:fontFamily="monospace"
         android:text="Name"
+        android:layout_marginLeft="50dp"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -45,11 +55,4 @@
         android:text="Country"
         android:textSize="16sp"
         android:textStyle="bold" />
-
-    <ImageView
-        android:id="@+id/coinImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
-        tools:srcCompat="@tools:sample/avatars" />
 </RelativeLayout>

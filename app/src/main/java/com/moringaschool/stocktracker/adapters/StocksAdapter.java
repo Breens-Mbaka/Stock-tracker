@@ -1,24 +1,28 @@
 package com.moringaschool.stocktracker.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.PictureDrawable;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.RequestBuilder;
+import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou;
+import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYouListener;
 import com.moringaschool.stocktracker.R;
 import com.moringaschool.stocktracker.models.Coin;
 import com.moringaschool.stocktracker.ui.CryptoStats;
-import com.moringaschool.stocktracker.ui.MainActivity;
-
-import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -28,7 +32,7 @@ import butterknife.ButterKnife;
 public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHolder> {
     private Context mContext;
     private List<Coin> mCryptoList;
-
+    private RequestBuilder<PictureDrawable> requestBuilder;
     public StocksAdapter(Context context,List<Coin> cryptoList) {
         mContext = context;
         mCryptoList = cryptoList;
@@ -45,6 +49,22 @@ public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHold
     public void onBindViewHolder(@NonNull StocksAdapter.MyViewHolder holder, int position) {
         holder.mSymbol.setText(mCryptoList.get(position).getSymbol());
         holder.mName.setText(mCryptoList.get(position).getName());
+
+        GlideToVectorYou
+                .init()
+                .with(mContext)
+                .withListener(new GlideToVectorYouListener() {
+                    @Override
+                    public void onLoadFailed() {
+                        Toast.makeText(mContext, "Load failed", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onResourceReady() {
+                        Toast.makeText(mContext, "Image ready", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .load(Uri.parse(mCryptoList.get(position).getIconUrl()),holder.mImage);
 
         Double price = Double.parseDouble(mCryptoList.get(position).getPrice());
         Double number = Math.round(price * 100.0) /100.0;
