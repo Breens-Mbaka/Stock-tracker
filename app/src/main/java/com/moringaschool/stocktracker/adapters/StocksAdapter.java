@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.PictureDrawable;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,10 +25,12 @@ import com.moringaschool.stocktracker.R;
 import com.moringaschool.stocktracker.models.Coin;
 import com.moringaschool.stocktracker.ui.CryptoStats;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHolder> {
     private Context mContext;
@@ -57,30 +60,34 @@ public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHold
                 .withListener(new GlideToVectorYouListener() {
                     @Override
                     public void onLoadFailed() {
-                        Toast.makeText(mContext, "Load failed", Toast.LENGTH_SHORT).show();
+                        Log.e("ERROR", "Failed loading");
                     }
 
                     @Override
                     public void onResourceReady() {
-                        Toast.makeText(mContext, "Image ready", Toast.LENGTH_SHORT).show();
+                        Log.d("READY", "Image loaded");
                     }
                 })
                 .load(Uri.parse(mCryptoList.get(position).getIconUrl()),holder.mImage);
 
-        Double price = Double.parseDouble(mCryptoList.get(position).getPrice());
-        Double number = Math.round(price * 100.0) /100.0;
-        holder.mCurrency.setText("$" + number.toString());
+        double price = Double.parseDouble(mCryptoList.get(position).getPrice());
+        double number = Math.round(price * 100.0) /100.0;
+        DecimalFormat df = new DecimalFormat("###,###.##");
+        String roundedPrice = df.format(number);
+        holder.mPrice.setText("$" + roundedPrice);
 
 
-        Double change = Double.parseDouble(mCryptoList.get(position).getChange());
-        Double priceChange = Math.round(change * 100.0) /100.0;
+        double change = Double.parseDouble(mCryptoList.get(position).getChange());
+        double priceChange = Math.round(change * 100.0) /100.0;
         if(priceChange < 0) {
-            holder.mCountry.setTextColor(Color.parseColor("#FF0000"));
+            int newPriceChange = (int) Math.abs(priceChange);
+            holder.mChange.setTextColor(Color.parseColor("#FF0000"));
+            holder.mChange.setText("-$" + Double.toString(newPriceChange));
         }
         else{
-            holder.mCountry.setTextColor(Color.parseColor("#1B5E20"));
+            holder.mChange.setTextColor(Color.parseColor("#00e676"));
+            holder.mChange.setText("+$" + Double.toString(priceChange));
         }
-        holder.mCountry.setText("$" + priceChange.toString());
 
         holder.parentLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,8 +108,8 @@ public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHold
         @BindView(R.id.coinImage) ImageView mImage;
         @BindView(R.id.textView3) TextView mSymbol;
         @BindView(R.id.textView4) TextView mName;
-        @BindView(R.id.textView5) TextView mCurrency;
-        @BindView(R.id.textView6) TextView mCountry;
+        @BindView(R.id.textView5) TextView mPrice;
+        @BindView(R.id.textView6) TextView mChange;
         @BindView(R.id.listContent) RelativeLayout parentLayout;
 
         public MyViewHolder(@NonNull View itemView) {

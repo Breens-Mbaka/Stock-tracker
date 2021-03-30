@@ -8,43 +8,56 @@
     android:layout_height="wrap_content"
     android:padding="20dp">
 
-    <ImageView
-        android:id="@+id/coinImage"
-        android:layout_width="20dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="15dp"
-        tools:srcCompat="@tools:sample/avatars"
-        android:src="@drawable/default_icon"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:cardCornerRadius="130dp"
+        android:layout_margin="3dp">
+
+        <ImageView
+            android:id="@+id/coinImage"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/default_icon"
+            tools:srcCompat="@tools:sample/avatars" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:layout_marginLeft="70dp"
+        android:textSize="17sp"
+        android:layout_marginTop="5dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/antic_slab"/>
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:layout_marginLeft="50dp"
+        android:layout_marginLeft="70dp"
         android:text="Symbol"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textSize="14sp"
+        android:layout_below="@+id/textView4"/>
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView3"
-        android:fontFamily="monospace"
-        android:text="Name"
-        android:layout_marginLeft="50dp"
-        android:textSize="16sp"
-        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:text="Currency"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:text="price"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/antic_slab"/>
 
     <TextView
         android:id="@+id/textView6"
@@ -52,7 +65,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView5"
         android:layout_alignParentEnd="true"
-        android:text="Country"
-        android:textSize="16sp"
+        android:fontFamily="@font/antic_slab"
+        android:text="change"
+        android:textSize="14sp"
+        android:layout_marginTop="5dp"
         android:textStyle="bold" />
+
 </RelativeLayout>
