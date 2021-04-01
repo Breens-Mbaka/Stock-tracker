@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:padding="10dp"
+    android:background="@color/light_blue">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:id="@+id/mainHeaders"
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginRight="35dp"
+            app:srcCompat="@drawable/ic_hamburger" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:text="Live price"
+            android:textColor="@color/white"
+            android:layout_marginLeft="40dp"
+            android:fontFamily="@font/antic_slab"/>
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="35dp"
+            app:srcCompat="@drawable/ic_user" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/header1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Market cap"
+        android:fontFamily="@font/antic_slab"
+        android:layout_marginLeft="12dp"
+        android:textColor="@color/white"
+        android:layout_marginTop="70dp"/>
+    <TextView
+        android:id="@+id/marketCap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="1.8T"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:fontFamily="@font/antic_slab"
+        android:layout_below="@id/header1"
+        android:paddingTop="10dp"
+        android:textColor="#00e676"
+        android:layout_marginLeft="12dp"/>
+
+    <TextView
+        android:id="@+id/header2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="24hVolume"
+        android:textColor="@color/white"
+        android:fontFamily="@font/antic_slab"
+        android:layout_marginLeft="145dp"
+        android:layout_marginTop="70dp"/>
+    <TextView
+        android:id="@+id/volume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="191B"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColor="#00e676"
+        android:fontFamily="@font/antic_slab"
+        android:layout_below="@id/header2"
+        android:layout_marginLeft="145dp"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/header3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Coins"
+        android:textColor="@color/white"
+        android:fontFamily="@font/antic_slab"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="70dp"/>
+    <TextView
+        android:id="@+id/totalCoins"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="7200"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColor="#00e676"
+        android:fontFamily="@font/antic_slab"
+        android:layout_marginLeft="300dp"
+        android:layout_below="@id/header3"
+        android:layout_marginTop="10dp"/>
+
+
+</RelativeLayout>

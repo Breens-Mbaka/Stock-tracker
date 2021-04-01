@@ -13,17 +13,22 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou;
+import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYouListener;
 import com.moringaschool.stocktracker.R;
+import com.moringaschool.stocktracker.models.Coin;
 import com.moringaschool.stocktracker.models.MyCrypto;
 import com.moringaschool.stocktracker.models2.CryptoData;
 import com.moringaschool.stocktracker.networking.TwelveDataApi;
 import com.moringaschool.stocktracker.networking.TwelveDataClient;
 
 import java.text.DecimalFormat;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,28 +37,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CryptoStats extends AppCompatActivity {
-    @BindView(R.id.textView8)
-    TextView mTextNames;
-    @BindView(R.id.textView9)
-    TextView mTextPrice;
-    @BindView(R.id.textView13)
-    TextView mHighestPrice;
-    @BindView(R.id.textView15)
-    TextView mMarketValue;
-    @BindView(R.id.textView17)
-    TextView mRanks;
-    @BindView(R.id.textView19)
-    TextView mTier;
-    @BindView(R.id.textView21)
-    TextView mVolumeTraded;
-    @BindView(R.id.textView23)
-    TextView mCirculation;
-    @BindView(R.id.progressBar2)
-    ProgressBar mProgress2;
-    @BindView(R.id.cardView)
-    CardView mCardView;
     @BindView(R.id.button2)
     Button mButton2;
+    @BindView(R.id.imageView) ImageView mImageView;
+    private List<Coin> coinList;
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +53,7 @@ public class CryptoStats extends AppCompatActivity {
 
     private void getData() {
         String coinID = getIntent().getStringExtra("uuid");
+        String iconUrl = getIntent().getStringExtra("icon url");
 
         TwelveDataApi twelveDataApi = TwelveDataClient.getClient();
         Call<CryptoData> call = twelveDataApi.getCryptoStats(coinID);
@@ -72,52 +61,20 @@ public class CryptoStats extends AppCompatActivity {
         call.enqueue(new Callback<CryptoData>() {
             @Override
             public void onResponse(Call<CryptoData> call, Response<CryptoData> response) {
-                mProgress2.setVisibility(View.GONE);
-                mTextNames.setVisibility(View.VISIBLE);
-                mTextPrice.setVisibility(View.VISIBLE);
-                mCardView.setVisibility(View.VISIBLE);
-                mButton2.setVisibility(View.VISIBLE);
+                GlideToVectorYou
+                        .init()
+                        .withListener(new GlideToVectorYouListener() {
+                            @Override
+                            public void onLoadFailed() {
+                                Log.e("ERROR", "Failed loading");
+                            }
 
-                mTextNames.setText(response.body().getData().getCoin().getName());
-
-                /**
-                 * converting string to double then rounding off the price.Then formatting them to be separated by commas
-                 */
-                double price = Double.parseDouble(response.body().getData().getCoin().getPrice());
-                double number = Math.round(price * 100.0) / 100.0;
-                mTextPrice.setText("$" + Double.toString(number));
-
-                double doubleHighestPrice = Double.parseDouble(response.body().getData().getCoin().getAllTimeHigh().getPrice());
-                double highestPrice = Math.round(doubleHighestPrice * 100.0) / 100.0;
-                DecimalFormat priceDf = new DecimalFormat("###,###.##");
-                String stringPrice = priceDf.format(highestPrice);
-                mHighestPrice.setText("$" + stringPrice);
-
-                Double doubleMarketCap = Double.parseDouble(response.body().getData().getCoin().getMarketCap());
-                if (doubleMarketCap > 999999999999.0) {
-                    DecimalFormat df = new DecimalFormat("##.##");
-                    String roundedMarketCap = df.format(doubleMarketCap / 1000000000000.0);
-                    mMarketValue.setText("$" + roundedMarketCap + "T");
-                } else {
-                    DecimalFormat df = new DecimalFormat("###,###");
-                    String roundedMarketCap = df.format(doubleMarketCap);
-                    mMarketValue.setText("$" + roundedMarketCap);
-                }
-
-                mRanks.setText(response.body().getData().getCoin().getRank().toString());
-
-                mTier.setText(response.body().getData().getCoin().getTier());
-
-
-                Double volumeTraded = Double.parseDouble(response.body().getData().getCoin().get24hVolume());
-                DecimalFormat df = new DecimalFormat("###,###");
-                String roundedVolume = df.format(volumeTraded);
-                mVolumeTraded.setText("$" + roundedVolume);
-
-                double circulation = Double.parseDouble(response.body().getData().getCoin().getSupply().getCirculating());
-                DecimalFormat circulationDf = new DecimalFormat("###,###.##");
-                String stringCirculation = circulationDf.format(circulation);
-                mCirculation.setText("$" + stringCirculation);
+                            @Override
+                            public void onResourceReady() {
+                                Log.d("READY", "Image loaded");
+                            }
+                        })
+                        .load(Uri.parse(iconUrl),mImageView);
 
                 mButton2.setOnClickListener(new View.OnClickListener() {
                     @Override

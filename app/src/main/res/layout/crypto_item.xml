@@ -9,11 +9,13 @@
     android:padding="20dp">
 
 
+
     <androidx.cardview.widget.CardView
         android:layout_width="50dp"
         android:layout_height="50dp"
         app:cardCornerRadius="130dp"
-        android:layout_margin="3dp">
+        android:layout_margin="3dp"
+        app:cardElevation="3dp">
 
         <ImageView
             android:id="@+id/coinImage"
