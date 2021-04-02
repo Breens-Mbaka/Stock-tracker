@@ -26,8 +26,7 @@ import com.moringaschool.stocktracker.ui.CryptoStats;
 import java.text.DecimalFormat;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHolder> {
     private static final int TYPE_HEAD = 0;
@@ -104,15 +103,18 @@ public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHold
                 public void onClick(View v) {
                     Intent intent = new Intent(mContext, CryptoStats.class);
                     intent.putExtra("uuid", crypto.getUuid());
+                    intent.putExtra("name", crypto.getName());
                     intent.putExtra("icon url", crypto.getIconUrl());
+                    intent.putExtra("rank", crypto.getRank().toString());
+                    intent.putExtra("price", crypto.getPrice());
                     mContext.startActivity(intent);
                 }
             });
 
         } else if (holder.view_type == TYPE_HEAD) {
-            holder.mGlobal1.setText("1.8T");
-            holder.mVolume.setText("191B");
-            holder.mTotalCoins.setText("7236");
+            //holder.mGlobal1.setText("1.8T");
+            //holder.mVolume.setText("191B");
+            //holder.mTotalCoins.setText("7236");
         }
 
 
@@ -126,7 +128,7 @@ public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHold
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         int view_type;
 
-        ImageView mImage;
+        CircleImageView mImage;
         TextView mSymbol;
         TextView mName;
         TextView mPrice;
@@ -134,12 +136,8 @@ public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHold
         RelativeLayout parentLayout;
 
         //header
-        TextView header1;
+        ImageView mMenu;
         TextView header2;
-        TextView header3;
-        TextView mGlobal1;
-        TextView mVolume;
-        TextView mTotalCoins;
 
         public MyViewHolder(@NonNull View itemView, int viewType) {
             super(itemView);
@@ -153,12 +151,9 @@ public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHold
                 parentLayout = itemView.findViewById(R.id.listContent);
                 view_type = 1;
             } else if (viewType == TYPE_HEAD) {
-                header1 = itemView.findViewById(R.id.header1);
-                header2 = itemView.findViewById(R.id.header2);
-                header3 = itemView.findViewById(R.id.header3);
-                mGlobal1 = itemView.findViewById(R.id.marketCap);
-                mVolume = itemView.findViewById(R.id.volume);
-                mTotalCoins = itemView.findViewById(R.id.totalCoins);
+                mMenu = itemView.findViewById(R.id.imageView2);
+                header2 = itemView.findViewById(R.id.textView8);
+
                 view_type = 0;
             }
         }

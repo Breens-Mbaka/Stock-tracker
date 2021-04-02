@@ -20,7 +20,6 @@ public class TwelveDataClient {
     private static Retrofit retrofit = null;
 
     public static TwelveDataApi getClient() {
-
         if (retrofit == null) {
             OkHttpClient okHttpClient = new OkHttpClient.Builder()
                     .addInterceptor(new Interceptor() {
