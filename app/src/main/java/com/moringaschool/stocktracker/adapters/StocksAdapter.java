@@ -82,7 +82,7 @@ public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHold
                     })
                     .load(Uri.parse(crypto.getIconUrl()), holder.mImage);
 
-            double price = Double.parseDouble(crypto.getPrice());
+            double price = Double.parseDouble((crypto).getPrice());
             double number = Math.round(price * 100.0) / 100.0;
             DecimalFormat df = new DecimalFormat("###,###.##");
             String roundedPrice = df.format(number);
@@ -123,7 +123,7 @@ public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHold
 
     @Override
     public int getItemCount() {
-        return mCryptoList.size() + 1;
+        return mCryptoList.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {

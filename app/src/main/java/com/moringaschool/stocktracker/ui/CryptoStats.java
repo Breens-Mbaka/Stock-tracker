@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,6 +48,8 @@ public class CryptoStats extends AppCompatActivity implements View.OnClickListen
 
     @BindView(R.id.backButton)
     ImageView mBackButton;
+    @BindView(R.id.favoriteCoins)
+    Button mFavoriteCoins;
     @BindView(R.id.cryptoName)
     TextView mName;
     @BindView(R.id.favoriteImageView)
@@ -85,6 +88,7 @@ public class CryptoStats extends AppCompatActivity implements View.OnClickListen
 
         mBackButton.setOnClickListener(this);
         mStar.setOnClickListener(this);
+        mFavoriteCoins.setOnClickListener(this);
         getData();
     }
 
@@ -98,6 +102,10 @@ public class CryptoStats extends AppCompatActivity implements View.OnClickListen
     public void onClick(View v) {
         if (v == mBackButton) {
             Intent intent = new Intent(CryptoStats.this, MainActivity.class);
+            startActivity(intent);
+        }
+        if (v == mFavoriteCoins) {
+            Intent intent = new Intent(CryptoStats.this, SavedCoinListActivity.class);
             startActivity(intent);
         }
         if (notClicked) {
@@ -135,6 +143,7 @@ public class CryptoStats extends AppCompatActivity implements View.OnClickListen
     public void getData() {
         Intent intent = getIntent();
         String name = intent.getStringExtra("name");
+        mName.setText(name);
 
         String price = intent.getStringExtra("price");
         mPrice.setText("$" + price);
@@ -150,7 +159,7 @@ public class CryptoStats extends AppCompatActivity implements View.OnClickListen
         }
     }
 
-    public void saveCoinToDatabase(String coinName) {
-        mCoin.push().setValue(coinName);
-    }
+    //public void saveCoinToDatabase(String coinName) {
+        //mCoin.push().setValue(coinName);
+    //}
 }
