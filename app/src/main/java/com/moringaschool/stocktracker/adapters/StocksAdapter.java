@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.RequestBuilder;
@@ -60,7 +61,7 @@ public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHold
     public void onBindViewHolder(@NonNull StocksAdapter.MyViewHolder holder, int position) {
         if (holder.view_type == TYPE_LIST) {
 
-            Coin crypto = mCryptoList.get(position-1);
+            Coin crypto = mCryptoList.get(position);
 
             holder.mSymbol.setText(crypto.getSymbol());
             holder.mName.setText(crypto.getName());
@@ -137,8 +138,9 @@ public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHold
         RelativeLayout parentLayout;
 
         //header
-        ImageView mMenu;
+        CardView cardView;
         TextView header2;
+        TextView listOfCoins;
 
         public MyViewHolder(@NonNull View itemView, int viewType) {
             super(itemView);
@@ -153,6 +155,8 @@ public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHold
                 view_type = 1;
             } else if (viewType == TYPE_HEAD) {
                 header2 = itemView.findViewById(R.id.textView8);
+                cardView = itemView.findViewById(R.id.cardView);
+                listOfCoins = itemView.findViewById(R.id.textListCoins);
 
                 view_type = 0;
             }

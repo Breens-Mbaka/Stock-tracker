@@ -42,7 +42,6 @@ import static com.moringaschool.stocktracker.Constants.FIREBASE_CHILD_COINS;
 public class CryptoStats extends AppCompatActivity implements View.OnClickListener {
     private List<Coin> mCoinList;
     private Context mContext;
-    private boolean notClicked = true;
     private DatabaseReference mCoin;
     private ValueEventListener mCoinListener;
 
@@ -108,7 +107,7 @@ public class CryptoStats extends AppCompatActivity implements View.OnClickListen
             Intent intent = new Intent(CryptoStats.this, SavedCoinListActivity.class);
             startActivity(intent);
         }
-        if (notClicked) {
+        if (v == mStar) {
             mStar.setImageResource(R.drawable.ic_star_yellow);
             Intent intent = getIntent();
             int clickedCoin = Integer.parseInt(intent.getStringExtra("itemPosition"));
@@ -125,7 +124,6 @@ public class CryptoStats extends AppCompatActivity implements View.OnClickListen
                             .getReference(FIREBASE_CHILD_COINS);
                     coinRef.push().setValue(myCoins);
                     Toast.makeText(CryptoStats.this, "Added to favorites", Toast.LENGTH_SHORT).show();
-                    notClicked = false;
                 }
 
                 @Override
@@ -133,10 +131,6 @@ public class CryptoStats extends AppCompatActivity implements View.OnClickListen
                     Log.e("ERROR", "ERROR: " + t);
                 }
             });
-
-        } else {
-            mStar.setImageResource(R.drawable.ic_star);
-            notClicked = true;
         }
     }
 

@@ -2,6 +2,7 @@ package com.moringaschool.stocktracker.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.util.Log;
 import android.view.View;
@@ -24,6 +25,7 @@ import com.moringaschool.stocktracker.ui.CryptoStats;
 
 import org.parceler.Parcels;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -67,8 +69,23 @@ public class FirebaseCoinViewHolder extends RecyclerView.ViewHolder implements V
                 .load(Uri.parse(coin.getIconUrl()), coinImage);
         mName.setText(coin.getName());
         mSymbol.setText(coin.getSymbol());
-        mPrice.setText(coin.getPrice());
-        mChange.setText(coin.getChange());
+
+        double price = Double.parseDouble(coin.getPrice());
+        double number = Math.round(price * 100.0) / 100.0;
+        DecimalFormat df = new DecimalFormat("###,###.##");
+        String roundedPrice = df.format(number);
+        mPrice.setText("$" + roundedPrice);
+
+        double change = Double.parseDouble(coin.getChange());
+        double priceChange = Math.round(change * 100.0) / 100.0;
+        if (priceChange < 0) {
+            int newPriceChange = (int) Math.abs(priceChange);
+            mChange.setTextColor(Color.parseColor("#FF0000"));
+            mChange.setText("-$" + Double.toString(newPriceChange));
+        } else {
+            mChange.setTextColor(Color.parseColor("#00e676"));
+            mChange.setText("+$" + Double.toString(priceChange));
+        }
     }
 
     @Override
