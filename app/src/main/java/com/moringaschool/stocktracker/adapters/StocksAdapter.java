@@ -102,11 +102,9 @@ public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHold
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(mContext, CryptoStats.class);
-                    intent.putExtra("uuid", crypto.getUuid());
+                    intent.putExtra("change", Double.toString(priceChange));
                     intent.putExtra("name", crypto.getName());
-                    intent.putExtra("icon url", crypto.getIconUrl());
-                    intent.putExtra("rank", crypto.getRank().toString());
-                    intent.putExtra("price", crypto.getPrice());
+                    intent.putExtra("price", roundedPrice);
                     mContext.startActivity(intent);
                 }
             });
@@ -151,7 +149,6 @@ public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHold
                 parentLayout = itemView.findViewById(R.id.listContent);
                 view_type = 1;
             } else if (viewType == TYPE_HEAD) {
-                mMenu = itemView.findViewById(R.id.imageView2);
                 header2 = itemView.findViewById(R.id.textView8);
 
                 view_type = 0;
