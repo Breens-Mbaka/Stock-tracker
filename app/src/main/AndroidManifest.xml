@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StockTracker">
-        <activity android:name=".ui.SavedCoinListActivity"></activity>
+
+        <activity android:name=".ui.MainActivity" />
         <activity
             android:name=".ui.CryptoStats"
             android:label=""
@@ -20,10 +21,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.CryptoStats" />
         </activity>
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.SavedCoinListActivity" />
+        <activity android:name=".ui.CreateUserAccount" />
+        <activity android:name=".ui.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
