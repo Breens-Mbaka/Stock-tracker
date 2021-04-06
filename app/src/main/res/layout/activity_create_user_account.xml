@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="20dp"
-    android:layout_marginTop="30dp">
+    android:layout_marginTop="30dp"
+    android:id="@+id/parentLayout">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/signUpAnimation"
@@ -24,7 +25,7 @@
         android:textSize="28sp"
         android:textStyle="bold"
         android:layout_below="@id/signUpAnimation"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/antic_slab"
         android:layout_centerHorizontal="true"/>
 
@@ -115,7 +116,7 @@
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New here? Sign up"
+        android:text="Already have an account? Log in here!"
         android:textStyle="bold"
         android:layout_below="@id/button"
         android:layout_centerHorizontal="true"
@@ -123,5 +124,21 @@
         android:textColor="#4957EE"
         android:paddingTop="15dp"/>
 
+    <ProgressBar
+        android:id="@+id/firebaseProgressBar"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
+    <TextView
+        android:id="@+id/loadingTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/firebaseProgressBar"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone" />
 </RelativeLayout>

@@ -16,14 +16,15 @@
         <activity
             android:name=".ui.CryptoStats"
             android:label=""
-            android:parentActivityName=".ui.MainActivity">
+            android:parentActivityName=".ui.MainActivity"
+            android:theme="@style/Theme.StockTracker.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.CryptoStats" />
         </activity>
-        <activity android:name=".ui.SavedCoinListActivity" />
-        <activity android:name=".ui.CreateUserAccount" />
-        <activity android:name=".ui.LoginActivity">
+        <activity android:name=".ui.SavedCoinListActivity" android:theme="@style/Theme.StockTracker.NoActionBar"/>
+        <activity android:name=".ui.CreateUserAccount" android:theme="@style/Theme.StockTracker.NoActionBar"/>
+        <activity android:name=".ui.LoginActivity" android:theme="@style/Theme.StockTracker.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
