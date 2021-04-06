@@ -1,181 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.CryptoStats"
-    android:padding="10dp"
-    android:layout_marginTop="30dp">
+    tools:context=".ui.CryptoStats">
 
-    <ProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:indeterminate="true"
-        android:id="@+id/progressBar2"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="100dp"/>
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text="TextView"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:visibility="gone"/>
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView8"
-        android:layout_centerHorizontal="true"
-        android:text="TextView"
-        android:textSize="25sp"
-        android:visibility="gone"/>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        card_view:cardBackgroundColor="#E6E6E6"
-        card_view:cardCornerRadius="8dp"
-        card_view:cardElevation="8dp"
+    <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:padding="10dp"
+        android:id="@+id/headerStats"
+        android:background="@drawable/gradient_drawable">
+
+
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_back_button"
+            android:layout_marginTop="14dp"/>
+
+        <TextView
+            android:id="@+id/cryptoName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bitcoin"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/antic_slab"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="22sp"/>
+
+        <ImageView
+            android:id="@+id/favoriteImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_star"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="14dp" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$56,000.97"
+            android:textColor="@color/white"
+            android:fontFamily="@font/antic_slab"
+            android:textSize="30dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/price"
+            android:text="+1.2%"
+            android:layout_marginTop="20dp"
+            app:chipIcon="@drawable/ic_trending"/>
+    </RelativeLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:lottie_rawRes="@raw/animation"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:layout_below="@id/headerStats"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textView9"
-        android:layout_margin="20dp"
-        android:backgroundTint="@color/white"
-        android:visibility="gone">
-
-        <RelativeLayout android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:padding="25dp">
-
-
-            <TextView
-                android:id="@+id/textView12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Highest price"
-                android:textSize="18sp"/>
-
-            <TextView
-                android:id="@+id/textView13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Price"
-                android:layout_below="@id/textView12"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/anton"/>
-
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Market Value"
-                android:layout_below="@id/textView13"
-                android:layout_marginTop="18dp"
-                android:textSize="18sp"/>
-
-            <TextView
-                android:id="@+id/textView15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Value"
-                android:layout_below="@id/textView14"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/anton"/>
-
-            <TextView
-                android:id="@+id/textView16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Rank"
-                android:layout_below="@id/textView15"
-                android:layout_marginTop="18dp"
-                android:textSize="18sp"/>
-
-            <TextView
-                android:id="@+id/textView17"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1"
-                android:layout_below="@id/textView16"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/anton"/>
-
-            <TextView
-                android:id="@+id/textView18"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tier"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:textSize="18sp"/>
-
-            <TextView
-                android:id="@+id/textView19"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1"
-                android:layout_below="@id/textView18"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/anton"/>
-
-            <TextView
-                android:id="@+id/textView20"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Volume"
-                android:layout_below="@id/textView19"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="18dp"
-                android:textSize="18sp"/>
-
-            <TextView
-                android:id="@+id/textView21"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1"
-                android:layout_below="@id/textView20"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/anton"/>
-
-            <TextView
-                android:id="@+id/textView22"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Circulation"
-                android:layout_below="@id/textView21"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="18dp"
-                android:textSize="18sp"/>
-
-            <TextView
-                android:id="@+id/textView23"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1"
-                android:layout_below="@id/textView22"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/anton"/>
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
+        android:fontFamily="@font/antic_slab"
+        android:text="Tap on star to add coin to your favorites"
+        android:layout_below="@id/headerStats"
+        android:textSize="15sp"
+        android:layout_marginTop="27dp"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:text="View Favorites"
+        android:backgroundTint="#4957EE"
+        android:fontFamily="@font/antic_slab"
+        android:layout_below="@id/textView2"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="35dp"
-        android:visibility="gone"
-        android:layout_below="@+id/cardView"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/teal_200"
-        android:text="MONITOR LIVE PRICE" />
+        android:layout_marginTop="40dp"
+        />
+
+
 </RelativeLayout>
