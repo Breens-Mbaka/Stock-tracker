@@ -3,80 +3,154 @@ package com.moringaschool.stocktracker.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou;
-import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYouListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.stocktracker.R;
+import com.moringaschool.stocktracker.adapters.StocksAdapter;
 import com.moringaschool.stocktracker.models.Coin;
+import com.moringaschool.stocktracker.models.MyCrypto;
+import com.moringaschool.stocktracker.networking.TwelveDataApi;
+import com.moringaschool.stocktracker.networking.TwelveDataClient;
 
-import java.text.DecimalFormat;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-public class CryptoStats extends AppCompatActivity implements View.OnClickListener{
-    private List<Coin> coinList;
+import static com.moringaschool.stocktracker.Constants.FIREBASE_CHILD_COIN;
+import static com.moringaschool.stocktracker.Constants.FIREBASE_CHILD_COINS;
+
+public class CryptoStats extends AppCompatActivity implements View.OnClickListener {
+    private List<Coin> mCoinList;
     private Context mContext;
-    @BindView(R.id.backButton) ImageView mBackButton;
-    @BindView(R.id.cryptoName) TextView mName;
-    @BindView(R.id.favoriteImageView) ImageView mStar;
-    @BindView(R.id.price) TextView mPrice;
-    @BindView(R.id.change) TextView mChange;
     private boolean notClicked = true;
+    private DatabaseReference mCoin;
+    private ValueEventListener mCoinListener;
+
+    @BindView(R.id.backButton)
+    ImageView mBackButton;
+    @BindView(R.id.cryptoName)
+    TextView mName;
+    @BindView(R.id.favoriteImageView)
+    ImageView mStar;
+    @BindView(R.id.price)
+    TextView mPrice;
+    @BindView(R.id.change)
+    TextView mChange;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        mCoin = FirebaseDatabase.getInstance()
+                .getReference()
+                .child(FIREBASE_CHILD_COIN);
+
+        mCoinListener = mCoin.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot coinSnapshot : snapshot.getChildren()) {
+                    String coinName = coinSnapshot.getValue().toString();
+                    Log.d("CHANGE", "Coin: " + coinName);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.crypto_stats);
         ButterKnife.bind(this);
+
         mBackButton.setOnClickListener(this);
         mStar.setOnClickListener(this);
         getData();
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mCoin.removeEventListener(mCoinListener);
+    }
+
+    @Override
     public void onClick(View v) {
-        if(v == mBackButton) {
+        if (v == mBackButton) {
             Intent intent = new Intent(CryptoStats.this, MainActivity.class);
             startActivity(intent);
         }
-       if(notClicked) {
-           mStar.setImageResource(R.drawable.ic_star_yellow);
-           notClicked = false;
-       }
-       else {
-           mStar.setImageResource(R.drawable.ic_star);
-           notClicked = true;
-       }
+        if (notClicked) {
+            mStar.setImageResource(R.drawable.ic_star_yellow);
+            Intent intent = getIntent();
+            int clickedCoin = Integer.parseInt(intent.getStringExtra("itemPosition"));
+
+            TwelveDataApi twelveDataApi = TwelveDataClient.getClient();
+            Call<MyCrypto> call = twelveDataApi.getStocks();
+
+            call.enqueue(new Callback<MyCrypto>() {
+                @Override
+                public void onResponse(Call<MyCrypto> call, Response<MyCrypto> response) {
+                    Coin myCoins = response.body().getData().getCoins().get(clickedCoin);
+                    DatabaseReference coinRef = FirebaseDatabase
+                            .getInstance()
+                            .getReference(FIREBASE_CHILD_COINS);
+                    coinRef.push().setValue(myCoins);
+                    Toast.makeText(CryptoStats.this, "Added to favorites", Toast.LENGTH_SHORT).show();
+                    notClicked = false;
+                }
+
+                @Override
+                public void onFailure(Call<MyCrypto> call, Throwable t) {
+                    Log.e("ERROR", "ERROR: " + t);
+                }
+            });
+
+        } else {
+            mStar.setImageResource(R.drawable.ic_star);
+            notClicked = true;
+        }
     }
 
     public void getData() {
         Intent intent = getIntent();
         String name = intent.getStringExtra("name");
-        mName.setText(name);
 
         String price = intent.getStringExtra("price");
         mPrice.setText("$" + price);
 
         String change = intent.getStringExtra("change");
         Double intChange = Double.parseDouble(change);
-        if(intChange < 0) {
+        if (intChange < 0) {
             mChange.setTextColor(Color.parseColor("#FF0000"));
             mChange.setText(Double.toString(intChange) + "%");
-        }
-        else {
+        } else {
             mChange.setTextColor(Color.parseColor("#00e676"));
             mChange.setText("+" + change + "%");
         }
+    }
+
+    public void saveCoinToDatabase(String coinName) {
+        mCoin.push().setValue(coinName);
     }
 }

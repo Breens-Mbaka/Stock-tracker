@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "752314862309",
+    "project_id": "stocktracker-77bfb",
+    "storage_bucket": "stocktracker-77bfb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:752314862309:android:7f08adda9d3b3800b7220c",
+        "android_client_info": {
+          "package_name": "com.moringaschool.stocktracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "752314862309-ha378lv8eh3idd5h7lcovdskq28f80jq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYfFeaDlbWrRMZPkT94aWb_mMJh68zFUY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "752314862309-ha378lv8eh3idd5h7lcovdskq28f80jq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
