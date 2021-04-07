@@ -86,7 +86,7 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/favoriteCoins"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="View Favorites"

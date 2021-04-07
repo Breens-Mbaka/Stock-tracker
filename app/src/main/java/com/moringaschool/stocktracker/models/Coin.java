@@ -52,6 +52,9 @@ public class Coin {
     @SerializedName("24hVolume")
     @Expose
     private String _24hVolume;
+
+
+    private String pushId;
     /**
      * No args constructor for use in serialization
      * 
@@ -204,6 +207,14 @@ public class Coin {
 
     public void set24hVolume(String _24hVolume) {
         this._24hVolume = _24hVolume;
+    }
+
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
     }
 
 }

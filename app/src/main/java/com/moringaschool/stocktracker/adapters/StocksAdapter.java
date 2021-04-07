@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.PictureDrawable;
 import android.net.Uri;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +13,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.RequestBuilder;
@@ -58,7 +61,7 @@ public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHold
     public void onBindViewHolder(@NonNull StocksAdapter.MyViewHolder holder, int position) {
         if (holder.view_type == TYPE_LIST) {
 
-            Coin crypto = mCryptoList.get(position-1);
+            Coin crypto = mCryptoList.get(position);
 
             holder.mSymbol.setText(crypto.getSymbol());
             holder.mName.setText(crypto.getName());
@@ -80,7 +83,7 @@ public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHold
                     })
                     .load(Uri.parse(crypto.getIconUrl()), holder.mImage);
 
-            double price = Double.parseDouble(crypto.getPrice());
+            double price = Double.parseDouble((crypto).getPrice());
             double number = Math.round(price * 100.0) / 100.0;
             DecimalFormat df = new DecimalFormat("###,###.##");
             String roundedPrice = df.format(number);
@@ -105,6 +108,7 @@ public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHold
                     intent.putExtra("change", Double.toString(priceChange));
                     intent.putExtra("name", crypto.getName());
                     intent.putExtra("price", roundedPrice);
+                    intent.putExtra("itemPosition", String.valueOf(position));
                     mContext.startActivity(intent);
                 }
             });
@@ -120,7 +124,7 @@ public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHold
 
     @Override
     public int getItemCount() {
-        return mCryptoList.size() + 1;
+        return mCryptoList.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -134,8 +138,9 @@ public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHold
         RelativeLayout parentLayout;
 
         //header
-        ImageView mMenu;
+        CardView cardView;
         TextView header2;
+        TextView listOfCoins;
 
         public MyViewHolder(@NonNull View itemView, int viewType) {
             super(itemView);
@@ -150,6 +155,8 @@ public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHold
                 view_type = 1;
             } else if (viewType == TYPE_HEAD) {
                 header2 = itemView.findViewById(R.id.textView8);
+                cardView = itemView.findViewById(R.id.cardView);
+                listOfCoins = itemView.findViewById(R.id.textListCoins);
 
                 view_type = 0;
             }
