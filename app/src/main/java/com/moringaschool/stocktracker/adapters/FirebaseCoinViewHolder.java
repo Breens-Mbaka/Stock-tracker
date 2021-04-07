@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou;
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYouListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -91,14 +93,16 @@ public class FirebaseCoinViewHolder extends RecyclerView.ViewHolder implements V
     @Override
     public void onClick(View v) {
         final ArrayList<Coin> coins = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        DatabaseReference coinRef = FirebaseDatabase
                 .getInstance()
                 .getReference(FIREBASE_CHILD_COINS);
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+        coinRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    coins.add(snapshot.getValue(Coin.class));
+                    coins.add(dataSnapshot.getValue(Coin.class));
                 }
                 int itemPosition = getLayoutPosition();
 

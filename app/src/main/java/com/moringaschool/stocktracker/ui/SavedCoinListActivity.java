@@ -13,6 +13,8 @@ import android.widget.ProgressBar;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.moringaschool.stocktracker.R;
@@ -35,7 +37,6 @@ public class SavedCoinListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
         mCoinReference = FirebaseDatabase.getInstance().getReference(FIREBASE_CHILD_COINS);
         setUpFirebaseAdapter();
         hideProgressBar();
@@ -75,7 +76,7 @@ public class SavedCoinListActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         if(mFirebaseAdapter!= null) {
-            mFirebaseAdapter.startListening();
+            mFirebaseAdapter.stopListening();
         }
     }
 
