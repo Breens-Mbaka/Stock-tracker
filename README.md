@@ -16,9 +16,9 @@ Stock tracker is an Android app that tracks your favorite crypto-currency in rea
 
 ## DEMO
 <p float="left">
-<img src="https://user-images.githubusercontent.com/72180010/113820878-f9a85280-9783-11eb-907e-7790a41fdfb4.png" width="280" height="500" />
-<img src="https://user-images.githubusercontent.com/72180010/113821144-60c60700-9784-11eb-8441-4b3d7729196b.png" width="280" height="500" />
-<img src="https://user-images.githubusercontent.com/72180010/113821674-16915580-9785-11eb-9394-ad5b8dbaafb9.png" width="280" height="500" />
+<img src="https://user-images.githubusercontent.com/72180010/113820878-f9a85280-9783-11eb-907e-7790a41fdfb4.png" width="260" height="500" />
+<img src="https://user-images.githubusercontent.com/72180010/113821144-60c60700-9784-11eb-8441-4b3d7729196b.png" width="260" height="500" />
+<img src="https://user-images.githubusercontent.com/72180010/113821674-16915580-9785-11eb-9394-ad5b8dbaafb9.png" width="260" height="500" />
 </p>
 
 ## Motivation
