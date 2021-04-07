@@ -2,28 +2,95 @@
 > Stock Tracker
 ## Table of contents
 * [Project description](#project-description)
-* [Technologies](#technologies)
+* [DEMO](#demo)
+* [Motivation](#motivation)
+* [Features](#features)
+* [Dependencies](#dependencies)
 * [Setup](#setup)
+* [Endpoints](#endpoints)
+* [TODO](#todo)
 * [Status](#status)
 
 ## Project Description 
-Stock tracker is an Android app that tracks your favorite crypto-currency and stocks in realtime.
+Stock tracker is an Android app that tracks your favorite crypto-currency in realtime.
 
-## Technologies
-This are the technologies I'm currently using in the creation of "Stock Tracker":
-* Java - logic and functionality
-* XML - creating user interface
-* JUnit/RoboElectric - testing application in JVM
-* Espresso - make automated tests simulating a user
+## DEMO
+![Sign In](/home/breens/AndroidStudioProjects/StockTracker/app/src/main/res/drawable-v24/signin.png) 
+
+## Motivation
+The main drive behind the project was the opportunity to create an app where you can monitor your profits in realtime crypto-currency since I've been interested in knowing how crypto-currency works
+.Also the goal of making an app from development to being published to Google Play store has been one of my dreams.
+
+## Features
+* User able to see a list of current valuable coins
+* User is able to view coin prices live
+* User is able to view price change
+* User is able to add favorite coins to monitor
+
+## Dependencies
+This dependencies helped a lot in the creation of the Stock tracker app;
+
+* Glide/AndroidSVG/GlideToVectorYou -> I used this to load svg images from the CoinRanking API
+* Retrofit -> I used this to aid me in making http calls to the API.Making REST API calls were fast and with minimal code
+* Firebase(Database,Authentication) -> I used this to store data in real time and sign in,sign up and sign out my users
+* AirBnb Lottie -> To add some animations to my application
+* CircleImageView -> To make my svg icon images to be circular
+* ButterKnife -> Helped in binding views efficiently
 
 ## Setup
-To run this app in your machine:
+> Setup instructions
+* Clone the repo to your local machine
+
 ```
-$ clone this repo locally
-$ cd ~/AndroidStudioProjects/StockTracker
-$ open project with Android Studio
-$ Run emulator to use Stock Tracker
+git clone https://github.com/your_username_/Project-Name.git
 ```
+* Get a free api key here
+
+```
+https://coinranking.com/page/cryptocurrency-api
+```
+* Enter Api key in gradle.properties
+
+```
+coinRankingApiKey = "yourApiKey"
+```
+
+* Configure your build config to have the key when building the app
+
+```
+buildTypes.each {
+        it.buildConfigField 'COIN_RANKING_API_KEY', coinRankingApiKey
+    }
+``` 
+
+## Endpoints
+> THis are examples of endpoints you can call with CoinRankingApi.For more info on CoinRanking api visit [here](https://developers.coinranking.com/api/documentation/)
+
+* Base URL
+``
+https://api.coinranking.com/v2
+``
+
+* Specific information about coin
+``
+GET /coin/:uuid
+``
+
+* Coin exchanges(where a specific coin can be trade)
+``
+GET /coin/:uuid/exchanges
+``
+
+* Coin history(lists prices and their timestamps)
+``
+GET /coin/:uuid/history
+``
+
+## TODO
+> Features to be added in next version
+
+* Add a chart showing the change in price with time
+* Allow user to filter what time duration they want i.e 24hr,60 minutes,7 days,1 year
 
 ## Status
 Project is: _in progress_
