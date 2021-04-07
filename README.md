@@ -15,7 +15,7 @@
 Stock tracker is an Android app that tracks your favorite crypto-currency in realtime.
 
 ## DEMO
-![Sign In](res/drawable-v24/signin.png) 
+![Sign In](drawable-v24/signin.png) 
 
 ## Motivation
 The main drive behind the project was the opportunity to create an app where you can monitor your profits in realtime crypto-currency since I've been interested in knowing how crypto-currency works
