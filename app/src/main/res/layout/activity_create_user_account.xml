@@ -138,6 +138,7 @@
         android:layout_centerInParent="true"
         android:layout_below="@+id/firebaseProgressBar"
         android:textColor="@color/black"
+        android:text="Signing you up..."
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:visibility="gone" />
