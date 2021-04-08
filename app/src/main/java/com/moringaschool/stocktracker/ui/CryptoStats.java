@@ -110,6 +110,7 @@ public class CryptoStats extends AppCompatActivity implements View.OnClickListen
             startActivity(intent);
         }
         if (v == mStar) {
+            assert mStar != null;
             mStar.setImageResource(R.drawable.ic_star_yellow);
             Intent intent = getIntent();
             int clickedCoin = Integer.parseInt(intent.getStringExtra("itemPosition"));
@@ -120,11 +121,21 @@ public class CryptoStats extends AppCompatActivity implements View.OnClickListen
             call.enqueue(new Callback<MyCrypto>() {
                 @Override
                 public void onResponse(Call<MyCrypto> call, Response<MyCrypto> response) {
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    assert user != null;
+                    String uid = user.getUid();
+
+                    assert response.body() != null;
                     Coin myCoins = response.body().getData().getCoins().get(clickedCoin);
                     DatabaseReference coinRef = FirebaseDatabase
                             .getInstance()
-                            .getReference(FIREBASE_CHILD_COINS);
-                    coinRef.push().setValue(myCoins);
+                            .getReference(FIREBASE_CHILD_COINS)
+                            .child(uid);
+
+                    DatabaseReference pushRef = coinRef.push();
+                    String pushId = pushRef.getKey();
+                    myCoins.setPushId(pushId);
+                    pushRef.setValue(myCoins);
                     Toast.makeText(CryptoStats.this, "Added to favorites", Toast.LENGTH_SHORT).show();
                 }
 

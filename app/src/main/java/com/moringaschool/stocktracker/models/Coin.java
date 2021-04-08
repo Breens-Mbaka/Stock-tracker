@@ -52,8 +52,6 @@ public class Coin {
     @SerializedName("24hVolume")
     @Expose
     private String _24hVolume;
-
-
     private String pushId;
     /**
      * No args constructor for use in serialization
