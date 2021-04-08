@@ -36,10 +36,6 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView mRecyclerView;
     @BindView(R.id.progressBar)
     ProgressBar mProgress;
-    //@BindView(R.id.textView)
-    //TextView mHeading1;
-    //@BindView(R.id.textView2)
-    //TextView mHeading2;
 
     private StocksAdapter stocksAdapter;
     private Context mContext;
@@ -78,8 +74,6 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<MyCrypto> call, Response<MyCrypto> response) {
                 //displaying content after response is gotten
                 mProgress.setVisibility(View.GONE);
-                //mHeading1.setVisibility(View.VISIBLE);
-                //mHeading2.setVisibility(View.VISIBLE);
                 mRecyclerView.setVisibility(View.VISIBLE);
 
                 stocksAdapter = new StocksAdapter(MainActivity.this, response.body().getData().getCoins());
