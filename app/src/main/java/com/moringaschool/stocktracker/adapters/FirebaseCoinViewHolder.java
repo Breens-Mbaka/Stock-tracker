@@ -93,11 +93,16 @@ public class FirebaseCoinViewHolder extends RecyclerView.ViewHolder implements V
     @Override
     public void onClick(View v) {
         final ArrayList<Coin> coins = new ArrayList<>();
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
 
         DatabaseReference coinRef = FirebaseDatabase
                 .getInstance()
-                .getReference(FIREBASE_CHILD_COINS);
+                .getReference(FIREBASE_CHILD_COINS)
+                .child(uid);
+
+
         coinRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

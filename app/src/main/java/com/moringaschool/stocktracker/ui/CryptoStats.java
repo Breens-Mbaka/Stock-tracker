@@ -165,8 +165,4 @@ public class CryptoStats extends AppCompatActivity implements View.OnClickListen
             mChange.setText("+" + change + "%");
         }
     }
-
-    //public void saveCoinToDatabase(String coinName) {
-        //mCoin.push().setValue(coinName);
-    //}
 }

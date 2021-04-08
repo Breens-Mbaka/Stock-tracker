@@ -37,7 +37,18 @@ public class SavedCoinListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        mCoinReference = FirebaseDatabase.getInstance().getReference(FIREBASE_CHILD_COINS);
+
+        //getting the user id of the current user logged in
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        assert user != null;
+        String uid = user.getUid();
+
+        mCoinReference = FirebaseDatabase
+                .getInstance()
+                .getReference(FIREBASE_CHILD_COINS)
+                .child(uid);
+
+
         setUpFirebaseAdapter();
         hideProgressBar();
         showListOfCoins();
