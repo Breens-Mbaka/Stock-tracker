@@ -69,7 +69,7 @@ public class SavedCoinListActivity extends AppCompatActivity {
             @NonNull
             @Override
             public FirebaseCoinViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.crypto_item,parent,false);
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.favorites_list_item,parent,false);
                 return new FirebaseCoinViewHolder(view);
             }
         };
