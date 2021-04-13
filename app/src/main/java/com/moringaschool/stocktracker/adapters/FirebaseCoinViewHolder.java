@@ -38,22 +38,24 @@ import static com.moringaschool.stocktracker.Constants.FIREBASE_CHILD_COINS;
 public class FirebaseCoinViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     View mView;
     Context mContext;
+    public ImageView mReorderImage;
 
-    @BindView(R.id.coinImage) ImageView coinImage;
-    @BindView(R.id.textView4) TextView mName;
-    @BindView(R.id.textView3) TextView mSymbol;
-    @BindView(R.id.textView5) TextView mPrice;
-    @BindView(R.id.textView6) TextView mChange;
 
     public FirebaseCoinViewHolder(View itemView) {
         super(itemView);
         mView = itemView;
-        ButterKnife.bind(this,mView);
         mContext = itemView.getContext();
         itemView.setOnClickListener(this);
     }
 
     public void bindCoins(Coin coin) {
+        mReorderImage =  mView.findViewById(R.id.reorderImage);
+        ImageView coinImage2 = mView.findViewById(R.id.coinImage2);
+        TextView mName = mView.findViewById(R.id.name);
+        TextView mSymbol = mView.findViewById(R.id.symbol);
+        TextView mPrice = mView.findViewById(R.id.price2);
+        TextView mChange = mView.findViewById(R.id.change2);
+
         GlideToVectorYou
                 .init()
                 .with(mContext)
@@ -68,7 +70,7 @@ public class FirebaseCoinViewHolder extends RecyclerView.ViewHolder implements V
                         Log.d("READY", "Image loaded");
                     }
                 })
-                .load(Uri.parse(coin.getIconUrl()), coinImage);
+                .load(Uri.parse(coin.getIconUrl()), coinImage2);
         mName.setText(coin.getName());
         mSymbol.setText(coin.getSymbol());
 
