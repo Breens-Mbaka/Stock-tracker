@@ -84,7 +84,7 @@ public class FireBaseCoinListAdapter extends FirebaseRecyclerAdapter<Coin, Fireb
     protected void onBindViewHolder(@NonNull FirebaseCoinViewHolder firebaseCoinViewHolder, int position, @NonNull Coin coin) {
         firebaseCoinViewHolder.bindCoins(coin);
 
-        firebaseCoinViewHolder.mReorderImage.setOnTouchListener(new View.OnTouchListener() {
+        firebaseCoinViewHolder.mCard.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if(event.getActionMasked() == MotionEvent.ACTION_DOWN) {

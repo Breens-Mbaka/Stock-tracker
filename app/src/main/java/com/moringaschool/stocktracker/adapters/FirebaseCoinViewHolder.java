@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou;
@@ -39,7 +40,7 @@ import static com.moringaschool.stocktracker.Constants.FIREBASE_CHILD_COINS;
 public class FirebaseCoinViewHolder extends RecyclerView.ViewHolder implements ItemTouchHelperViewHolder {
     View mView;
     Context mContext;
-    public ImageView mReorderImage;
+    public CardView mCard;
 
 
     public FirebaseCoinViewHolder(View itemView) {
@@ -49,12 +50,12 @@ public class FirebaseCoinViewHolder extends RecyclerView.ViewHolder implements I
     }
 
     public void bindCoins(Coin coin) {
-        mReorderImage =  mView.findViewById(R.id.reorderImage);
         ImageView coinImage2 = mView.findViewById(R.id.coinImage2);
         TextView mName = mView.findViewById(R.id.name);
         TextView mSymbol = mView.findViewById(R.id.symbol);
         TextView mPrice = mView.findViewById(R.id.price2);
         TextView mChange = mView.findViewById(R.id.change2);
+        mCard = mView.findViewById(R.id.card);
 
         GlideToVectorYou
                 .init()

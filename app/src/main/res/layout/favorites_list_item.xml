@@ -13,7 +13,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="7dp"
         android:layout_marginBottom="2dp"
-        app:cardCornerRadius="5dp">
+        app:cardCornerRadius="5dp"
+        android:id="@+id/card">
 
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -71,15 +72,6 @@
             android:text="change"
             android:textSize="14sp"
             android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/reorderImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/baseline_reorder_black_24dp"
-            android:layout_marginStart="160dp"
-            android:layout_marginTop="30dp"/>
-
     </androidx.cardview.widget.CardView>
 
 
