@@ -107,6 +107,7 @@ public class CryptoStats extends AppCompatActivity implements View.OnClickListen
         }
         if (v == mFavoriteCoins) {
             Intent intent = new Intent(CryptoStats.this, SavedCoinListActivity.class);
+            Log.d("DEBUG", "Message: " + intent);
             startActivity(intent);
         }
         if (v == mStar) {

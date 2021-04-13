@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou;
@@ -24,6 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.stocktracker.R;
 import com.moringaschool.stocktracker.models.Coin;
 import com.moringaschool.stocktracker.ui.CryptoStats;
+import com.moringaschool.stocktracker.utils.ItemTouchHelperViewHolder;
 
 import org.parceler.Parcels;
 
@@ -35,25 +37,26 @@ import butterknife.ButterKnife;
 
 import static com.moringaschool.stocktracker.Constants.FIREBASE_CHILD_COINS;
 
-public class FirebaseCoinViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class FirebaseCoinViewHolder extends RecyclerView.ViewHolder implements ItemTouchHelperViewHolder {
     View mView;
     Context mContext;
+    public CardView mCard;
 
-    @BindView(R.id.coinImage) ImageView coinImage;
-    @BindView(R.id.textView4) TextView mName;
-    @BindView(R.id.textView3) TextView mSymbol;
-    @BindView(R.id.textView5) TextView mPrice;
-    @BindView(R.id.textView6) TextView mChange;
 
     public FirebaseCoinViewHolder(View itemView) {
         super(itemView);
         mView = itemView;
-        ButterKnife.bind(this,mView);
         mContext = itemView.getContext();
-        itemView.setOnClickListener(this);
     }
 
     public void bindCoins(Coin coin) {
+        ImageView coinImage2 = mView.findViewById(R.id.coinImage2);
+        TextView mName = mView.findViewById(R.id.name);
+        TextView mSymbol = mView.findViewById(R.id.symbol);
+        TextView mPrice = mView.findViewById(R.id.price2);
+        TextView mChange = mView.findViewById(R.id.change2);
+        mCard = mView.findViewById(R.id.card);
+
         GlideToVectorYou
                 .init()
                 .with(mContext)
@@ -68,7 +71,7 @@ public class FirebaseCoinViewHolder extends RecyclerView.ViewHolder implements V
                         Log.d("READY", "Image loaded");
                     }
                 })
-                .load(Uri.parse(coin.getIconUrl()), coinImage);
+                .load(Uri.parse(coin.getIconUrl()), coinImage2);
         mName.setText(coin.getName());
         mSymbol.setText(coin.getSymbol());
 
@@ -91,36 +94,19 @@ public class FirebaseCoinViewHolder extends RecyclerView.ViewHolder implements V
     }
 
     @Override
-    public void onClick(View v) {
-        final ArrayList<Coin> coins = new ArrayList<>();
+    public void onItemSelected() {
+        itemView.animate()
+                .alpha(0.7f)
+                .scaleX(0.9f)
+                .scaleY(0.9f)
+                .setDuration(500);
+    }
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String uid = user.getUid();
-
-        DatabaseReference coinRef = FirebaseDatabase
-                .getInstance()
-                .getReference(FIREBASE_CHILD_COINS)
-                .child(uid);
-
-
-        coinRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    coins.add(dataSnapshot.getValue(Coin.class));
-                }
-                int itemPosition = getLayoutPosition();
-
-                Intent intent = new Intent(mContext, CryptoStats.class);
-                intent.putExtra("position", itemPosition + "");
-                intent.putExtra("coins", Parcels.wrap(coins));
-                mContext.startActivity(intent);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+    @Override
+    public void onItemClear() {
+        itemView.animate()
+                .alpha(1f)
+                .scaleX(1f)
+                .scaleY(1f);
     }
 }

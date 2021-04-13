@@ -53,6 +53,7 @@ public class Coin {
     @Expose
     private String _24hVolume;
     private String pushId;
+    String index;
     /**
      * No args constructor for use in serialization
      * 
@@ -93,6 +94,7 @@ public class Coin {
         this.sparkline = sparkline;
         this.coinrankingUrl = coinrankingUrl;
         this._24hVolume = _24hVolume;
+        this.index = "not_specified";
     }
 
     public String getUuid() {
@@ -215,4 +217,11 @@ public class Coin {
         this.pushId = pushId;
     }
 
+    public String getIndex() {
+        return index;
+    }
+
+    public void setIndex(String index) {
+        this.index = index;
+    }
 }
