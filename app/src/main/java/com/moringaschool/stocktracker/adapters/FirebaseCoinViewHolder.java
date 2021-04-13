@@ -24,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.moringaschool.stocktracker.R;
 import com.moringaschool.stocktracker.models.Coin;
 import com.moringaschool.stocktracker.ui.CryptoStats;
+import com.moringaschool.stocktracker.utils.ItemTouchHelperViewHolder;
 
 import org.parceler.Parcels;
 
@@ -35,7 +36,7 @@ import butterknife.ButterKnife;
 
 import static com.moringaschool.stocktracker.Constants.FIREBASE_CHILD_COINS;
 
-public class FirebaseCoinViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class FirebaseCoinViewHolder extends RecyclerView.ViewHolder implements ItemTouchHelperViewHolder {
     View mView;
     Context mContext;
     public ImageView mReorderImage;
@@ -45,7 +46,6 @@ public class FirebaseCoinViewHolder extends RecyclerView.ViewHolder implements V
         super(itemView);
         mView = itemView;
         mContext = itemView.getContext();
-        itemView.setOnClickListener(this);
     }
 
     public void bindCoins(Coin coin) {
@@ -93,36 +93,12 @@ public class FirebaseCoinViewHolder extends RecyclerView.ViewHolder implements V
     }
 
     @Override
-    public void onClick(View v) {
-        final ArrayList<Coin> coins = new ArrayList<>();
+    public void onItemSelected() {
+        Log.d("Animation", "onItemSelected");
+    }
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String uid = user.getUid();
-
-        DatabaseReference coinRef = FirebaseDatabase
-                .getInstance()
-                .getReference(FIREBASE_CHILD_COINS)
-                .child(uid);
-
-
-        coinRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    coins.add(dataSnapshot.getValue(Coin.class));
-                }
-                int itemPosition = getLayoutPosition();
-
-                Intent intent = new Intent(mContext, CryptoStats.class);
-                intent.putExtra("position", itemPosition + "");
-                intent.putExtra("coins", Parcels.wrap(coins));
-                mContext.startActivity(intent);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+    @Override
+    public void onItemClear() {
+        Log.d("Animation", "onItemClear");
     }
 }
