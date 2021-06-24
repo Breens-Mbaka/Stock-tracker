@@ -113,12 +113,7 @@ public class StocksAdapter extends RecyclerView.Adapter<StocksAdapter.MyViewHold
                 }
             });
 
-        } else if (holder.view_type == TYPE_HEAD) {
-            //holder.mGlobal1.setText("1.8T");
-            //holder.mVolume.setText("191B");
-            //holder.mTotalCoins.setText("7236");
         }
-
 
     }
 
